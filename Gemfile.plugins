@@ -3,6 +3,6 @@
 # whereas OpenProject will be checked out to `.`.
 
 group :opf_plugins do
-  gem 'openproject-proto_plugin', path: 'plugins/this'
+  gem 'openproject-th_plugin', path: 'plugins/this'
   gem 'activesupport', '~> 5.0.0'
 end

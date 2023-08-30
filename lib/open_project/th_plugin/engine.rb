@@ -3,14 +3,14 @@
 require 'active_support/dependencies'
 require 'open_project/plugins'
 
-module OpenProject::ProtoPlugin
+module OpenProject::ThPlugin
   class Engine < ::Rails::Engine
-    engine_name :openproject_proto_plugin
+    engine_name :openproject_th_plugin
 
     include OpenProject::Plugins::ActsAsOpEngine
 
     register(
-      'openproject-proto_plugin',
+      'openproject-th_plugin',
       :author_url => 'https://openproject.org',
       :requires_openproject => '>= 6.0.0'
     ) do
@@ -50,7 +50,7 @@ module OpenProject::ProtoPlugin
     end
 
     config.to_prepare do
-      ::OpenProject::ProtoPlugin::Hooks
+      ::OpenProject::ThPlugin::Hooks
     end
 
     config.after_initialize do

@@ -21,6 +21,6 @@ import * as jQuery from 'jquery';
     // Widget box emphasized by giving it a nice red border.
     $('#proto-plugin-block').parent().addClass('proto-plugin-widget-box');
 
-    console.log(I18n.t('js.proto_plugin_name') + ' OK');
+    console.log(I18n.t('js.th_plugin_name') + ' OK');
   });
 })(jQuery);

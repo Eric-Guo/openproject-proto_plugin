@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    openproject-proto_plugin (7.1.0)
+    openproject-th_plugin (7.1.0)
       rails (~> 7.0)
 
 GEM
@@ -153,7 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  openproject-proto_plugin!
+  openproject-th_plugin!
 
 BUNDLED WITH
    2.4.19
