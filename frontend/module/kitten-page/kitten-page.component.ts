@@ -12,7 +12,7 @@ import { I18nService } from 'core-app/core/i18n/i18n.service';
 export class KittenPageComponent{
 
   text = {
-    kittens: this.I18n.t('js.proto_plugin_name'),
+    kittens: this.I18n.t('js.th_plugin_name'),
   };
 
   kittenName = 'FooBar';

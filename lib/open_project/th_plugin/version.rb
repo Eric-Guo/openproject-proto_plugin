@@ -1,5 +1,5 @@
 module OpenProject
-  module ProtoPlugin
+  module ThPlugin
     VERSION = "7.1.0"
   end
 end

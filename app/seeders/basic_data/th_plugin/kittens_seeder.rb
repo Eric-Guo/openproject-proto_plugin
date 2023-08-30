@@ -1,5 +1,5 @@
 module BasicData
-  module ProtoPlugin
+  module ThPlugin
     ##
     # Seeders defined under `BasicData::<PluginNameSpace>` get discovered by the core
     # automatically.
