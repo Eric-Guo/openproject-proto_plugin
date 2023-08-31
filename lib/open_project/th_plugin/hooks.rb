@@ -26,7 +26,7 @@ module OpenProject::ThPlugin
     # This is a controller hook. It doesn't render anything. Its return value
     # may be used by the callsite of the hook. Though it's not used most of the time.
     def controller_account_success_authentication_after(context={})
-      context[:controller].flash[:kittens] = "Yay! Welcome #{context[:user].firstname}!"
+      # context[:controller].flash[:kittens] = "Yay! Welcome #{context[:user].firstname}!"
     end
   end
 end
