@@ -6,14 +6,14 @@ require 'open_project/th_plugin/version'
 Gem::Specification.new do |s|
   s.name        = "openproject-th_plugin"
   s.version     = OpenProject::ThPlugin::VERSION
-  s.authors     = "OpenProject GmbH"
-  s.email       = "info@openproject.org"
-  s.homepage    = "https://git.thape.com.cn/rails/openproject-th_plugin"  # TODO check this URL
-  s.summary     = 'OpenProject Thape Plugin'
+  s.authors     = "Shanghai TIANHUA Architecture Planning & Engineering Ltd."
+  s.email       = "guochunzhong@thape.com.cn"
+  s.homepage    = "https://git.thape.com.cn/rails/openproject-th_plugin"
+  s.summary     = 'OpenProject THAPE perple plugin'
   s.description = "A Thape OpenProject plugin"
   s.license     = "GPLv3"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + %w(CHANGELOG.md README.md)
 
-  s.add_dependency "rails", '~> 7.0'
+  s.add_dependency "rails", '~> 7.1'
 end

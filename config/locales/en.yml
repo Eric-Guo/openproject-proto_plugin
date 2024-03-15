@@ -1,6 +1,6 @@
 ---
 en:
-  th_plugin_name: Thape plugin
+  project_module_th_plugin: "Thape member plugin"
   label_kitten: Kitten
   label_kittens: Kittens
   label_kitten_new: New Kitten

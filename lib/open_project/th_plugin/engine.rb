@@ -11,8 +11,9 @@ module OpenProject::ThPlugin
 
     register(
       'openproject-th_plugin',
-      :author_url => 'https://openproject.org',
-      :requires_openproject => '>= 13.1.0'
+      author_url: 'https://www.thape.com',
+      requires_openproject: '>= 13.5.0',
+      name: :project_module_th_plugin,
     ) do
       # We define a new project module here for our controller including a permission.
       # The permission is necessary for us to be able to add menu items to the project
