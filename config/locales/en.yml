@@ -2,6 +2,8 @@
 en:
   project_module_th_plugin: "Thape custom plugin"
   project_module_th_members_module: "Thape custom members"
+  permission_view_th_members: "View Member Profile"
+  permission_manage_th_members: "Edit Member Profile"
   label_kitten: Kitten
   label_kittens: Kittens
   label_kitten_new: New Kitten
