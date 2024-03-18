@@ -22,7 +22,7 @@ module OpenProject::ThPlugin
       #
       # You may have to enable the project module ("Kittens module") under project
       # settings before you can see the menu entry.
-      project_module :kittens_module do
+      project_module :th_members_module do
         permission :view_kittens,
                    {
                       kittens: %i[index],
