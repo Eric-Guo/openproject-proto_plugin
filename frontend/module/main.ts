@@ -50,7 +50,7 @@ import { KittenPageComponent } from 'core-app/features/plugins/linked/openprojec
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
 
-export function initializeProtoPlugin(injector:Injector) {
+export function initializeThPlugin(injector:Injector) {
   return () => {
     const hookService = injector.get(HookService);
 
@@ -69,7 +69,7 @@ export function initializeProtoPlugin(injector:Injector) {
     // use it to hook up global listeners or bootstrap components
     {
       provide: APP_INITIALIZER,
-      useFactory: initializeProtoPlugin,
+      useFactory: initializeThPlugin,
       deps: [Injector],
       multi: true,
     },
