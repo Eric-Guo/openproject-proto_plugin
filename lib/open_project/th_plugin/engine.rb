@@ -43,14 +43,14 @@ module OpenProject::ThPlugin
            { controller: '/th_members', action: :index },
            caption: :label_kittens,
            if: ->(project) { project.module_enabled?('th_members_module') },
-           icon: 'backlogs',
+           icon: 'training-consulting',
            after: :members
 
       menu :top_menu,
            :angular_kittens,
            '/angular_kittens',
            after: :kittens,
-           icon: 'view-timeline',
+           icon: 'training-consulting',
            param: :project_id,
            caption: "Kittens Frontend"
     end
