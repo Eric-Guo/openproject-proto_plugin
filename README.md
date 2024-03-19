@@ -153,13 +153,14 @@ Great, we're on our way.
 
 The relevant files for the specs are:
 
-* `spec/controllers/kittens_controller_spec.rb`
+* `spec/controllers/th_members_controller_spec.rb`
 
 You have to run the specs from within the core. For instance:
 
 ```
 $ cd $OPENPROJECT_ROOT
-$ RAILS_ENV=test bundle exec rspec `bundle show openproject-proto_plugin`/spec/controllers/kittens_controller_spec.rb
+$ RAILS_ENV=test bundle exec rspec `bundle show openproject-th_plugin`/spec/controllers/th_members_controller_spec.rb
+$ RAILS_ENV=test bundle exec rspec `bundle show openproject-th_plugin`/spec/features/project_kittens_spec.rb
 ```
 
 

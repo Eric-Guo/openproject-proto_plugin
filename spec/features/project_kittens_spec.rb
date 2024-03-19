@@ -36,7 +36,7 @@ require 'spec_helper'
 # Testing is done with Capybara and Selenium
 RSpec.describe 'Project kittens', type: :feature, js: true do
   let(:permissions) { %w[view_th_members manage_th_members] }
-  let(:project) { FactoryBot.create :project, enabled_module_names: %w[kittens_module] }
+  let(:project) { FactoryBot.create :project, enabled_module_names: %w[th_members_module] }
   let(:user) do
     FactoryBot.create :user,
                       member_with_permissions: { project => permissions }
@@ -50,14 +50,14 @@ RSpec.describe 'Project kittens', type: :feature, js: true do
     let!(:kitten) { FactoryBot.create :kitten, name: 'Foobar' }
 
     it 'will show an existing kitten' do
-      visit kitten_plugin_project_kittens_path project_id: project.id
+      visit th_plugin_project_th_members_path project_id: project.id
       expect(page).to have_text "These are the kittens"
       expect(page).to have_selector '.kitten', text: 'Foobar'
     end
   end
 
   it 'can create a new kitten' do
-    visit kitten_plugin_project_kittens_path project_id: project.id
+    visit th_plugin_project_th_members_path project_id: project.id
     expect(page).to have_text "There is currently nothing to display."
 
     click_on 'New Kitten'
@@ -74,7 +74,7 @@ RSpec.describe 'Project kittens', type: :feature, js: true do
     let(:permissions) { %w[view_project] }
 
     it 'will render a 403' do
-      visit kitten_plugin_project_kittens_path project_id: project.id
+      visit th_plugin_project_th_members_path project_id: project.id
       expect(page).to have_text "You are not authorized to access this page."
     end
   end

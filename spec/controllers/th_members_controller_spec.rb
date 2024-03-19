@@ -30,7 +30,7 @@
 
 require 'spec_helper'
 
-RSpec.describe KittensController, type: :controller do
+RSpec.describe ThMembersController, type: :controller do
   let(:user) { FactoryBot.create :admin }
   let(:project) { FactoryBot.create :project }
 
@@ -45,7 +45,7 @@ RSpec.describe KittensController, type: :controller do
 
     it 'renders a template' do
       expect(response).to be_successful
-      expect(response).to render_template 'kittens/index'
+      expect(response).to render_template 'th_members/index'
     end
   end
 end
