@@ -4,7 +4,7 @@
 <%= toolbar(title: t(:label_kittens)) do %>
   <% if (@project.present? && current_user.allowed_in_project?(:manage_th_members, @project)) || (@project.nil? && current_user.allowed_in_any_project?(:manage_th_members)) %>
     <li class="toolbar-item">
-      <%= link_to(new_kitten_plugin_project_kitten_path, class: 'button') do %>
+      <%= link_to(new_th_plugin_project_th_member_path, class: 'button') do %>
         <span class="button--text"><%= t(:label_kitten_new) %></span>
       <% end %>
     </li>

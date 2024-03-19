@@ -40,18 +40,17 @@ module OpenProject::ThPlugin
 
       menu :project_menu,
            :kittens,
-           { controller: '/kittens', action: 'index' },
-           after: :overview,
-           param: :project_id,
-           caption: "Kittens",
-           icon: 'icon2 icon-settings',
-           html: { id: "kittens-menu-item" },
-           if: ->(project) { true }
+           { controller: '/th_members', action: :index },
+           caption: :label_kittens,
+           if: ->(project) { project.module_enabled?('th_members_module') },
+           icon: 'backlogs',
+           after: :members
 
       menu :top_menu,
            :angular_kittens,
            '/angular_kittens',
            after: :kittens,
+           icon: 'view-timeline',
            param: :project_id,
            caption: "Kittens Frontend"
     end
