@@ -9,9 +9,9 @@ import * as jQuery from 'jquery';
   $(document).ready(function() {
 
     // OpenProject logo gets thick red border on mouse hover.
-    $("#logo").hover(
+    $(".op-logo").hover(
       function enter() {
-        $(this).attr("style", "border: 3px solid red;");
+        $(this).attr("style", "border: 2px solid red;");
       },
       function leave() {
         $(this).removeAttr("style");
