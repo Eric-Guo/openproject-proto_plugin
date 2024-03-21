@@ -5,9 +5,7 @@ class ThMembersController < ApplicationController
   before_action :authorize
 
   def index
-    @kittens = Kitten.all
-
-    render layout: true
+    render layout: "angular/angular"
   end
 
   def new
