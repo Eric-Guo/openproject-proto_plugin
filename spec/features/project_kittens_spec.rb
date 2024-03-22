@@ -35,7 +35,7 @@ require 'spec_helper'
 #
 # Testing is done with Capybara and Selenium
 RSpec.describe 'Project kittens', type: :feature, js: true do
-  let(:permissions) { %w[view_th_members manage_th_members] }
+  let(:permissions) { %w[view_th_plugin_members manage_th_plugin_members] }
   let(:project) { FactoryBot.create :project, enabled_module_names: %w[th_members_module] }
   let(:user) do
     FactoryBot.create :user,

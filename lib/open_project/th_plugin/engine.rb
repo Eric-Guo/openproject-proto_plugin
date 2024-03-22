@@ -23,14 +23,14 @@ module OpenProject::ThPlugin
       # You may have to enable the project module ("Kittens module") under project
       # settings before you can see the menu entry.
       project_module :th_members_module do
-        permission :view_th_members,
+        permission :view_th_plugin_members,
                    {
                       th_members: %i[index],
                       angular_kittens: %i[show]
                    },
                    permissible_on: [:project]
 
-        permission :manage_th_members,
+        permission :manage_th_plugin_members,
                    {
                       th_members: %i[new create edit destroy],
                       angular_kittens: %i[show]
