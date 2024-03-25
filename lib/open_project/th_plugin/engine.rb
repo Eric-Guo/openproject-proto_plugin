@@ -41,7 +41,7 @@ module OpenProject::ThPlugin
       menu :project_menu,
            :kittens,
            { controller: '/th_members', action: :index },
-           caption: :label_kittens,
+           caption: :label_th_member_plural,
            if: ->(project) { project.module_enabled?('th_members_module') },
            icon: 'training-consulting',
            after: :members
@@ -52,7 +52,7 @@ module OpenProject::ThPlugin
            after: :kittens,
            icon: 'training-consulting',
            param: :project_id,
-           caption: "Kittens Frontend"
+           caption: :label_kittens
     end
 
     config.to_prepare do
