@@ -1,5 +1,10 @@
 <tr class="member user">
   <td class="name">
+    <op-principal
+      [principal]="member.principal"
+      size="mini"
+      [hideName]="false"
+    ></op-principal>
   </td>
   <td class="email">
     <a *ngIf="email" [href]="mailTo">{{ email }}</a>

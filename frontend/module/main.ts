@@ -43,10 +43,11 @@ import {
 import './global_scripts';
 import { UIRouterModule } from '@uirouter/angular';
 import { HookService } from 'core-app/features/plugins/hook-service';
-import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
 import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
+import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
 import { KittenPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-page/kitten-page.component';
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
@@ -66,6 +67,7 @@ export function initializeThPlugin(injector:Injector) {
   imports: [
     CommonModule,
     FormsModule,
+    OpenprojectPrincipalRenderingModule,
     UIRouterModule.forChild({ states: KITTEN_ROUTES }),
   ],
   providers: [
