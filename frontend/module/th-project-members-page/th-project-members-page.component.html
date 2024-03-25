@@ -70,6 +70,15 @@
           <label class="form--label" title="添加现有用户或组 或通过电子邮件邀请新用户" for="member_user_ids">
             添加现有用户或组 或通过电子邮件邀请新用户
           </label>
+          <op-user-autocompleter
+            name="member[user_ids][]"
+            [url]="autoCompleterUrl"
+            appendTo="body"
+            [multiple]="true"
+            [model]="addFormData.users"
+            (change)="handleAddFormDataChange('users', $event)"
+          >
+          </op-user-autocompleter>
         </div>
       </div>
       <div class="grid-content medium-8 small-12 -flex -with-button">

@@ -45,6 +45,7 @@ import { UIRouterModule } from '@uirouter/angular';
 import { HookService } from 'core-app/features/plugins/hook-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { OpenprojectAutocompleterModule } from 'core-app/shared/components/autocompleter/openproject-autocompleter.module';
 import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
 import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
 import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
@@ -67,6 +68,7 @@ export function initializeThPlugin(injector:Injector) {
   imports: [
     CommonModule,
     FormsModule,
+    OpenprojectAutocompleterModule,
     OpenprojectPrincipalRenderingModule,
     UIRouterModule.forChild({ states: KITTEN_ROUTES }),
   ],
