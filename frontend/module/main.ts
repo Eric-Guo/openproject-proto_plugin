@@ -45,10 +45,13 @@ import { UIRouterModule } from '@uirouter/angular';
 import { HookService } from 'core-app/features/plugins/hook-service';
 import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
 import { KittenPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-page/kitten-page.component';
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
+import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members-page/th-project-members-page.component';
+import { ThProjectMembersRowComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members-component/th-project-members-row.component';
 
 export function initializeThPlugin(injector:Injector) {
   return () => {
@@ -62,6 +65,7 @@ export function initializeThPlugin(injector:Injector) {
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     UIRouterModule.forChild({ states: KITTEN_ROUTES }),
   ],
   providers: [
@@ -78,6 +82,8 @@ export function initializeThPlugin(injector:Injector) {
     // Declare the component for angular to use
     KittenComponent,
     KittenPageComponent,
+    ThProjectMembersPageComponent,
+    ThProjectMembersRowComponent,
   ],
 })
 export class PluginModule {
