@@ -47,6 +47,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { OpenprojectAutocompleterModule } from 'core-app/shared/components/autocompleter/openproject-autocompleter.module';
 import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
+import { AttributeHelpTextModule } from 'core-app/shared/components/attribute-help-texts/attribute-help-text.module';
 import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
 import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
 import { KittenPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-page/kitten-page.component';
@@ -70,6 +71,7 @@ export function initializeThPlugin(injector:Injector) {
     FormsModule,
     OpenprojectAutocompleterModule,
     OpenprojectPrincipalRenderingModule,
+    AttributeHelpTextModule,
     UIRouterModule.forChild({ states: KITTEN_ROUTES }),
   ],
   providers: [
