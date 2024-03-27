@@ -1,10 +1,19 @@
 <tr class="member user">
-  <td class="name">
-    <op-principal
-      [principal]="member.principal"
-      size="mini"
-      [hideName]="false"
-    ></op-principal>
+  <td class="name" style="padding-left: 16px;">
+    <ng-template [ngIf]="editing" [ngIfElse]="toEditName">
+      <input
+        style="width: 100%;"
+        [(ngModel)]="formData.name"
+      />
+    </ng-template>
+    <ng-template #toEditName>
+      <op-principal
+        [principal]="member.principal"
+        size="mini"
+        [hideName]="true"
+      ></op-principal>
+      {{ name }}
+    </ng-template>
   </td>
   <td class="email">
     <a *ngIf="email" [href]="mailTo">{{ email }}</a>
@@ -30,13 +39,10 @@
       {{ memberRoles }}
     </ng-template>
   </td>
-  <td class="groups">
-    {{ groups }}
-  </td>
   <td class="status">
     {{ statusName }}
   </td >
-  <td class="company">
+  <td class="company" *ngIf="isProjectAdmin">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditCompany">
       <input
         style="width: 100%;"
@@ -47,7 +53,7 @@
       {{ company }}
     </ng-template>
   </td>
-  <td class="department">
+  <td class="department" *ngIf="isProjectAdmin">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditDepartment">
       <input
         style="width: 100%;"
@@ -58,21 +64,32 @@
       {{ department }}
     </ng-template>
   </td>
-  <td class="position">
-    <ng-template [ngIf]="editing" [ngIfElse]="toEditPosition">
+  <td class="major">
+    <ng-template [ngIf]="editing" [ngIfElse]="toEditMajor">
       <input
         style="width: 100%;"
-        [(ngModel)]="formData.position"
+        [(ngModel)]="formData.major"
       />
     </ng-template>
-    <ng-template #toEditPosition>
-      {{ position }}
+    <ng-template #toEditMajor>
+      {{ major }}
     </ng-template>
   </td>
-  <td class="remark">
+  <td class="mobile">
+    <ng-template [ngIf]="editing" [ngIfElse]="toEditMobile">
+      <input
+        style="width: 100%;"
+        [(ngModel)]="formData.mobile"
+      />
+    </ng-template>
+    <ng-template #toEditMobile>
+      {{ mobile }}
+    </ng-template>
+  </td>
+  <td class="remark" style="position: relative;">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditRemark">
       <textarea
-        style="width: 100%; resize: none;"
+        style="position:absolute; top: 0;left: 0;right: 0;bottom: 0;width: 100%; resize: none;"
         rows="5"
         [(ngModel)]="formData.remark"
       ></textarea>
