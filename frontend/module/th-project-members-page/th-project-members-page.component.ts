@@ -61,7 +61,6 @@ type GroupMembersItemMember = {
 @Component({
   selector: 'op-project-members',
   templateUrl: './th-project-members-page.component.html',
-  styles: ['op-project-members-row { display: contents; }'],
 })
 export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   @ViewChild('filterForm') filterForm:NgForm;

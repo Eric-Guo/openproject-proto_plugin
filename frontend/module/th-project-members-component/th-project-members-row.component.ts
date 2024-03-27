@@ -1,5 +1,7 @@
 import {
-  Component, Input,
+  Component,
+  Input,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -13,6 +15,7 @@ import { ToastService } from 'core-app/shared/components/toaster/toast.service';
   selector: 'th-project-members-row',
   templateUrl: './th-project-members-row.component.html',
   styles: ['th-project-members-row { display: contents; }'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ThProjectMembersRowComponent {
   @Input() roles:RoleResource[] = [];
