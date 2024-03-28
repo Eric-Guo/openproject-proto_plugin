@@ -527,6 +527,13 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   handleAddSubmit = async () => {
     try {
       this.indicator.start();
+      this.addFormData.users.forEach(userId => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'member[user_ids][]';
+        input.value = userId.id;
+        this.addForm.nativeElement.appendChild(input);
+      });
       const formData = new FormData(this.addForm.nativeElement);
       const userIds = formData.get('member[user_ids][]');
       const roleIds = formData.get('member[role_ids][]');
@@ -555,7 +562,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       this.addFormData.roleIds = this.roles[0].id as string;
       setTimeout(() => {
         this.getMembers();
-      }, 50);
+      }, 100);
     } catch (err) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
       this.toastService.addError(err.message);
