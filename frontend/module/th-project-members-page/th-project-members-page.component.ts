@@ -194,7 +194,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   get addMemberUrl() {
     if (!this.currentProject.identifier) return null;
-    return `/projects/${this.currentProject.identifier}/members`;
+    return `/projects/${this.currentProject.identifier}/members.json`;
   }
 
   get isProjectAdmin() {
@@ -380,7 +380,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       const wb = new ExcelJs.Workbook();
       await wb.xlsx.load(buf);
       const ws = wb.getWorksheet(1);
-      if (!ws) throw new Error('未找到有效的sheet');
+      if (!ws) throw new Error('未找到有效的 sheet');
       const rows:TableRow[] = [];
       const emailCounts:Record<string, number> = {};
       const parseCell = (cell:ExcelJs.Cell) => cell.toCsvString().trim().replace(/(^("|')[\s]*)|([\s]*("|')$)/g, '');
@@ -550,20 +550,19 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       await new Promise((resolve, reject) => {
         this.httpClient.post(url, formData).pipe(
           catchError((error) => {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            console.log("catchError", error);
             reject(error.error);
             throw error;
           }),
         ).subscribe((res) => {
           resolve(res);
+          this.getMembers();          
         });
       });
       this.addFormData.users = [];
       this.addFormData.roleIds = this.roles[0].id as string;
-      setTimeout(() => {
-        this.getMembers();
-      }, 100);
     } catch (err) {
+      console.log("catch", err);
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
       this.toastService.addError(err.message);
     } finally {
