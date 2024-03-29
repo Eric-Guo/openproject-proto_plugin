@@ -54,6 +54,7 @@ import { KittenPageComponent } from 'core-app/features/plugins/linked/openprojec
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
 import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members/th-project-members-page.component';
+import { ThProjectMembersPageDropdownMenuDirective } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members/th-project-members-page-dropdown-menu.directive';
 import { ThProjectMembersRowComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members-component/th-project-members-row.component';
 
 export function initializeThPlugin(injector:Injector) {
@@ -89,6 +90,7 @@ export function initializeThPlugin(injector:Injector) {
     KittenComponent,
     KittenPageComponent,
     ThProjectMembersPageComponent,
+    ThProjectMembersPageDropdownMenuDirective,
     ThProjectMembersRowComponent,
   ],
 })
