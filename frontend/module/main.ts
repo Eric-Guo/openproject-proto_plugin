@@ -53,7 +53,7 @@ import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th
 import { KittenPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-page/kitten-page.component';
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
-import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members-page/th-project-members-page.component';
+import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members/th-project-members-page.component';
 import { ThProjectMembersRowComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members-component/th-project-members-row.component';
 
 export function initializeThPlugin(injector:Injector) {
