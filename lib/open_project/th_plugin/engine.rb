@@ -2,6 +2,7 @@
 # or not at all
 require 'active_support/dependencies'
 require 'open_project/plugins'
+require_relative 'patches/api/user_representer'
 
 module OpenProject::ThPlugin
   class Engine < ::Rails::Engine
@@ -58,6 +59,9 @@ module OpenProject::ThPlugin
     config.to_prepare do
       ::OpenProject::ThPlugin::Hooks
     end
+
+    extend_api_response(:v3, :users, :user,
+                        &::OpenProject::ThPlugin::Patches::API::UserRepresenter.extension)
 
     config.after_initialize do
       OpenProject::Static::Homescreen.manage :blocks do |blocks|
