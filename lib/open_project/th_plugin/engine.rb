@@ -45,7 +45,7 @@ module OpenProject::ThPlugin
            caption: :label_th_member_plural,
            if: ->(project) { project.module_enabled?('th_members_module') },
            icon: 'training-consulting',
-           after: :members
+           after: :work_packages
 
       menu :top_menu,
            :angular_kittens,
