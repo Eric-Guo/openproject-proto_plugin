@@ -46,14 +46,6 @@ module OpenProject::ThPlugin
            if: ->(project) { project.module_enabled?('th_members_module') },
            icon: 'training-consulting',
            after: :work_packages
-
-      menu :top_menu,
-           :angular_kittens,
-           '/angular_kittens',
-           after: :kittens,
-           icon: 'training-consulting',
-           param: :project_id,
-           caption: :label_kittens
     end
 
     config.to_prepare do

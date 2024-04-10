@@ -49,8 +49,6 @@ import { OpenprojectAutocompleterModule } from 'core-app/shared/components/autoc
 import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
 import { AttributeHelpTextModule } from 'core-app/shared/components/attribute-help-texts/attribute-help-text.module';
 import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
-import { KittenComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-component/kitten.component';
-import { KittenPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten-page/kitten-page.component';
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
 import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members/th-project-members-page.component';
@@ -87,8 +85,6 @@ export function initializeThPlugin(injector:Injector) {
   ],
   declarations: [
     // Declare the component for angular to use
-    KittenComponent,
-    KittenPageComponent,
     ThProjectMembersPageComponent,
     ThProjectMembersPageDropdownMenuDirective,
     ThProjectMembersRowComponent,
