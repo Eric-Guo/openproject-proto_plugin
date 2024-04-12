@@ -69,7 +69,7 @@ export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrig
     this.items = [
       {
         disabled: false,
-        linkText: ' 导入成员',
+        linkText: ' 导入人员',
         hidden: false,
         icon: 'icon-import',
         onClick: () => {
@@ -79,7 +79,7 @@ export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrig
       },
       {
         disabled: false,
-        linkText: '导出成员',
+        linkText: '导出人员',
         hidden: false,
         icon: 'icon-export',
         onClick: () => {

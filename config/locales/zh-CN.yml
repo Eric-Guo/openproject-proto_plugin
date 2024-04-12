@@ -2,8 +2,8 @@
 zh-CN:
   project_module_th_plugin: "天华扩展插件"
   project_module_th_members_module: "天华人员扩展"
-  permission_view_th_plugin_members: "查看成员资料"
-  permission_manage_th_plugin_members: "修改成员资料"
+  permission_view_th_plugin_members: "查看人员资料"
+  permission_manage_th_plugin_members: "修改人员资料"
   label_kitten: "猫猫"
   label_kittens: "猫猫猫"
   label_kitten_new: "新的猫猫"

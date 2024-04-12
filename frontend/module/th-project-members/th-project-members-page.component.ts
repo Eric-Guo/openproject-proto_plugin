@@ -285,7 +285,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       remark: member.profile?.remark || '',
     }));
 
-    await this.exportSheet(rows, `${this.currentProject?.name || '项目'}-成员列表`);
+    await this.exportSheet(rows, `${this.currentProject?.name || '项目'}-人员列表`);
   };
 
   openAction(name:Exclude<typeof this.currentAction, null>) {

@@ -1,7 +1,7 @@
 <div class="toolbar-container">
   <div class="toolbar">
     <div class="title-container">
-      <h2>成员（{{ members.length }}）</h2>
+      <h2>人员（{{ members.length }}）</h2>
     </div>
     <ul class="toolbar-items">
       <li
@@ -9,14 +9,14 @@
         class="toolbar-item"
       >
         <button
-          aria-label="添加成员"
-          title="添加成员"
+          aria-label="添加人员"
+          title="添加人员"
           class="button -alt-highlight"
           [disabled]="currentAction === 'add'"
           (click)="openAction('add')"
         >
           <i class="button--icon icon-add" aria-hidden="true"></i>
-          <span class="button--text">成员</span>
+          <span class="button--text">人员</span>
         </button>
       </li>
       <li class="toolbar-item">
@@ -85,8 +85,8 @@
       </div>
       <div class="grid-content medium-8 small-12 -flex -with-button">
         <div class="form--field">
-          <label class="form--label" title="将角色分配给新成员" for="member_role_ids">
-            <span>将角色分配给新成员</span>
+          <label class="form--label" title="将角色分配给新人员" for="member_role_ids">
+            <span>将角色分配给新人员</span>
             <attribute-help-text
               attribute="members"
               attribute-scope="Project"
@@ -98,7 +98,7 @@
                 name="member[role_ids][]"
                 id="member_role_ids"
                 no_label="true"
-                title="将角色分配给新成员"
+                title="将角色分配给新人员"
                 tabindex="0"
                 class="form--select"
                 [value]="addFormData.roleIds"
