@@ -569,4 +569,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       this.indicator.stop();
     }
   };
+
+  handleDownloadTemplate = async () => {
+    await this.exportSheet([], '项目成员列表模板');
+  };
 }
