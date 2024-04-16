@@ -25,7 +25,7 @@
   </td>
   <td class="roles">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditRoles">
-      <label *ngFor="let role of roles">
+      <label *ngFor="let role of roles" style="display: block;">
         <input
           type="checkbox"
           [value]="role.id"
