@@ -50,6 +50,7 @@ module OpenProject::ThPlugin
 
     config.to_prepare do
       ::OpenProject::ThPlugin::Hooks
+      ::OpenProject::ThPlugin::Patches::MembersPatch.mixin!
     end
 
     extend_api_response(:v3, :users, :user,
