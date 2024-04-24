@@ -48,6 +48,8 @@ module OpenProject::ThPlugin
            before: :settings
     end
 
+    patches %i[Member User]
+
     config.to_prepare do
       ::OpenProject::ThPlugin::Hooks
       ::OpenProject::ThPlugin::Patches::MembersPatch.mixin!
