@@ -1,5 +1,9 @@
 ---
 en:
+  attributes:
+    company: "Company"
+    position: "Position"
+    remark: "Remark"
   project_module_th_plugin: "Thape custom plugin"
   project_module_th_members_module: "Thape custom members"
   permission_view_th_plugin_members: "View Member Profile"

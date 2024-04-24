@@ -1,5 +1,9 @@
 ---
 zh-CN:
+  attributes:
+    company: "公司"
+    position: "职位"
+    remark: "备注"
   project_module_th_plugin: "天华扩展插件"
   project_module_th_members_module: "天华人员扩展"
   permission_view_th_plugin_members: "查看人员资料"
