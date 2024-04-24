@@ -13,8 +13,9 @@ module OpenProject::ThPlugin
         after_create :send_join_notifications
 
         private
+
         def send_join_notifications
-          ThMembers::SendJoinToWxWorkJob.perform_later(self.id)
+          ::ThPlugin::SendJoinToWxWorkJob.perform_later(self.id)
         end
       end
     end
