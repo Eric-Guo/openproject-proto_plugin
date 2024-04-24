@@ -34,7 +34,7 @@ module OpenProject::ThPlugin
         permission :manage_th_plugin_members,
                    {
                      th_members: %i[new create edit destroy],
-                     "th_members/member_profiles": %i[update],
+                     "th_plugin/member_profiles": %i[update],
                      angular_kittens: %i[show]
                    },
                    permissible_on: [:project]

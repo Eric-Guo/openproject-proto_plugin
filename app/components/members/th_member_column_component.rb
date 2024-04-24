@@ -21,7 +21,7 @@ module Members
 
     def form_url_hash
       {
-        controller: "/th_members/member_profiles",
+        controller: "/th_plugin/member_profiles",
         action: "update",
         id: member.id,
         page: params[:page],
