@@ -4,6 +4,8 @@ module OpenProject::ThPlugin
       base.send(:include, InstanceMethods)
 
       base.class_eval do
+        has_one :staff, class_name: 'Cybros::User', foreign_key: 'email', primary_key: 'mail'
+
         before_create :set_th_profile
 
         before_save :update_member_profiles, if: Proc.new { |user| user.saved_change_to_last_login_on? \
