@@ -16,7 +16,7 @@ module OpenProject::ThPlugin
 
       def th_members_enabled?
         if @th_members_enabled.nil?
-          @th_members_enabled = project.present? && project.module_enabled?(:th_members)
+          @th_members_enabled = project.present? && project.module_enabled?(:th_members_module)
         end
 
         @th_members_enabled
