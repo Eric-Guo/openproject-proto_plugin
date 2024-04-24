@@ -26,15 +26,16 @@ module OpenProject::ThPlugin
       project_module :th_members_module do
         permission :view_th_plugin_members,
                    {
-                      th_members: %i[index],
-                      angular_kittens: %i[show]
+                     th_members: %i[index],
+                     angular_kittens: %i[show]
                    },
                    permissible_on: [:project]
 
         permission :manage_th_plugin_members,
                    {
-                      th_members: %i[new create edit destroy],
-                      angular_kittens: %i[show]
+                     th_members: %i[new create edit destroy],
+                     "th_members/member_profiles": %i[update],
+                     angular_kittens: %i[show]
                    },
                    permissible_on: [:project]
       end
