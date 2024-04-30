@@ -12,7 +12,8 @@ class ThPlugin::AddActiveDepartmentJob < ApplicationJob
         "#{company_name}-#{dept_name}"
       end
 
-      puts group_name
+      group = Group.find_or_initialize_by(name: group_name)
+      group.save
     end
   end
 end
