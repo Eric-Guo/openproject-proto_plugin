@@ -49,6 +49,15 @@ module OpenProject::ThPlugin
            before: :settings
     end
 
+    add_cron_jobs do
+      {
+        "ThPlugin::AddActiveDepartmentJob": {
+          cron: "40 23 * * *", # Run once per night at 11:40pm
+          class: ThPlugin::AddActiveDepartmentJob.name
+        }
+      }
+    end
+
     patches %i[Member User]
 
     config.to_prepare do
