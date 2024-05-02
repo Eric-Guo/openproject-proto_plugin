@@ -58,7 +58,7 @@ module OpenProject::ThPlugin
       }
     end
 
-    patches %i[Member User]
+    patches %i[Member User Group]
 
     config.to_prepare do
       ::OpenProject::ThPlugin::Hooks
