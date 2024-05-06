@@ -9,6 +9,7 @@ module Cybros
     has_many :departments, through: :department_users
     has_many :position_users, -> { order(main_position: :desc) }
     has_many :positions, through: :position_users
+    belongs_to :op_user, class_name: 'User', foreign_key: 'mail', primary_key: 'email'
 
     has_one :stfreinstate, -> { active }, class_name: 'Hrdw::HrdwStfreinstateBi', foreign_key: :clerkcode, primary_key: :clerk_code
 
