@@ -16,7 +16,7 @@ module Cybros
 
       if dept_name.start_with?('天华集团')
         dept_name
-      else
+      elsif company_name.present?
         "#{company_name}-#{dept_name}"
       end
     end
