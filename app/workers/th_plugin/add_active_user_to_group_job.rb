@@ -5,8 +5,10 @@ class ThPlugin::AddActiveUserToGroupJob < ApplicationJob
       next if group_name.blank?
 
       group = Group.find_by(name: group_name)
-      users_in_op = position_users.collect { |pu| pu.user.op_user.present? }.uniq
-      puts users_in_op
+      next if group.blank?
+
+      users_in_op = position_users.collect { |pu| pu.user.op_user }.reject(&:nil?).uniq
+      group.add_members_to_group(User.system, users_in_op)
     end
   end
 end
