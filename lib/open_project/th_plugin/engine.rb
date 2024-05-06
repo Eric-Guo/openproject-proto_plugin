@@ -51,9 +51,14 @@ module OpenProject::ThPlugin
 
     add_cron_jobs do
       {
-        "ThPlugin::AddActiveDepartmentJob": {
+        "ThPlugin::AddActiveDepartmentAsGroupJob": {
           cron: "40 23 * * *", # Run once per night at 11:40pm
-          class: ThPlugin::AddActiveDepartmentJob.name
+          class: ThPlugin::AddActiveDepartmentAsGroupJob.name
+        },
+
+        "ThPlugin::AddActiveUserToGroupJob": {
+          cron: "45 23 * * *", # Run once per night at 11:45pm
+          class: ThPlugin::AddActiveUserToGroupJob.name
         }
       }
     end

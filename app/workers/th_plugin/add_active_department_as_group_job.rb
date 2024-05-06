@@ -1,4 +1,4 @@
-class ThPlugin::AddActiveDepartmentJob < ApplicationJob
+class ThPlugin::AddActiveDepartmentAsGroupJob < ApplicationJob
   def perform
     departments = Cybros::Position.active_department_list
     departments.each do |department|
