@@ -132,12 +132,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   getRoles() {
     const filters = new ApiV3FilterBuilder();
-    filters.add('grantable', '=', true);
     filters.add('unit', '=', ['project']);
-    const params = {
-      offset: '1',
-      pageSize: '10',
-    };
+    const params = {};
     this.apiV3Service.roles.filtered(filters, params).get().subscribe((res) => {
       this.roles = res.elements;
     });
