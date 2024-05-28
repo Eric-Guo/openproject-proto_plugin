@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'rails', '~> 7.1'
   s.add_dependency 'mysql2'
+  s.add_dependency 'gruf'
 end
