@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = "guochunzhong@thape.com.cn"
   s.homepage    = "https://git.thape.com.cn/rails/openproject-th_plugin"
   s.summary     = 'OpenProject THAPE perple plugin'
-  s.description = "A Thape OpenProject plugin"
+  s.description = "The general OpenProject plugin"
   s.license     = "GPLv3"
 
   s.files = Dir["{app,config,db,lib}/**/*"] + %w(CHANGELOG.md README.md)
