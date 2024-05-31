@@ -89,6 +89,6 @@ module OpenProject::ThPlugin
       end
     end
 
-    assets %w(kitty.png)
+    assets %w(kitty.png plm/logo_plm_dark.png plm/logo_plm_new.png plm/logo_plm.png)
   end
 end
