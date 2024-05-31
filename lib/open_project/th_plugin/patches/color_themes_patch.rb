@@ -13,7 +13,7 @@ module OpenProject::ThPlugin
 
       module ClassMethods
         def themes
-          super.append(plm_dark, thape_ib, plm_light)
+          super.append(plm_dark, thape_ib, thape_ib_new, plm_light)
         end
 
         def plm_dark
@@ -59,6 +59,29 @@ module OpenProject::ThPlugin
               'main-menu-border-color' => '#EAEAEA'
             },
             logo: 'plm/logo_plm_dark.png'
+          }
+        end
+
+        def thape_ib_new
+          {
+            theme: 'Thape IB New',
+            colors: {
+              'primary-button-color' => '#8F89A3',
+              'accent-color' => '#1F1547',
+              'header-bg-color' => '#1F1547',
+              'header-item-bg-hover-color' => '#8F89A3',
+              'header-item-font-color' => '#FFFFFF',
+              'header-item-font-hover-color' => '#FFFFFF',
+              'header-border-bottom-color' => '',
+              'main-menu-bg-color' => '#333739',
+              'main-menu-bg-selected-background' => '#797291',
+              'main-menu-bg-hover-background' => '#8F89A3',
+              'main-menu-font-color' => '#FFFFFF',
+              'main-menu-hover-font-color' => '#FFFFFF',
+              'main-menu-selected-font-color' => '#FFFFFF',
+              'main-menu-border-color' => '#EAEAEA'
+            },
+            logo: 'plm/logo_plm_new.png'
           }
         end
 
