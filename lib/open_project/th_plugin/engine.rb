@@ -63,6 +63,7 @@ module OpenProject::ThPlugin
       }
     end
 
+    patch_with_namespace :OpenProject, :CustomStyles, :ColorThemes
     patches %i[Member User Group]
 
     config.to_prepare do
