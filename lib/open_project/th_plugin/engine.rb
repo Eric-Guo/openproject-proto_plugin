@@ -45,7 +45,7 @@ module OpenProject::ThPlugin
            { controller: '/th_members', action: :index },
            caption: :label_th_member_plural,
            if: ->(project) { project.module_enabled?('th_members_module') },
-           icon: 'training-consulting',
+           icon: 'id-badge',
            before: :settings
     end
 
