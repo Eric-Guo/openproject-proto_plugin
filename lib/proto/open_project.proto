@@ -1,0 +1,86 @@
+syntax = "proto3";
+option go_package = "../opService";
+import "google/protobuf/empty.proto";
+
+message TemplateDataItem {
+  string value = 1;
+  string color = 2;
+}
+
+// templateID:模板ID
+// data first:标题
+//      keynote1:值
+//      keynote2:值
+//      keynote3:值
+//      ...
+//      remark:备注
+// toMail 用户邮箱
+// toUserID op用户ID
+message MessageRequest {
+  string templateID = 1;
+  map<string, TemplateDataItem> data = 2; 
+  string url = 3;
+  string toLogin = 5;
+  int64 toUserID = 4;
+}
+
+// code:0 返回正确
+//      > 0 错误
+// message 错误消息
+message Result {
+  int64 code = 1;
+  string message = 2;
+}
+
+message Template {
+  string title = 1;
+  string templateID = 2;
+  string body = 3;
+  string trade = 4;
+}
+
+message GetTemplateResp {
+  repeated Template templates = 1;
+}
+
+message GetUserInfoByCodeReq {
+  string code = 1;
+}
+
+message WorkerMessageReq {
+  int64 toUserID = 1; 
+  string title = 2; 
+  string description = 3;
+  string url = 4;
+  string buttonText = 5;
+}
+
+message ReportForm {
+  int64 ID = 1;
+  int64 ReportProjectID = 2;
+  string Type = 3;
+  string Subject = 4;
+  string Status = 5;
+  string StartTime = 6;
+  string EndTime = 7;
+  string Duration = 8;
+  string Remarks = 9;
+  int64 ParentID = 10;
+}
+
+message GetPdfReq {
+  repeated ReportForm Data = 1;
+  string Email = 2;
+}
+
+message GetPdfResp {
+  string url = 1;
+}
+
+service OpService {
+  rpc SendMessage(MessageRequest) returns(Result);
+  rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
+  rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(RespUser);
+  rpc SendWcWorkerMessage(WorkerMessageReq) returns(RespUser);
+  rpc GetPdf(GetPdfReq) returns(GetPdfResp);
+}
