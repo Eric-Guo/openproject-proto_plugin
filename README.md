@@ -493,7 +493,6 @@ Hooks in the base template:
 * :view_layouts_base_html_head
 * :view_layouts_base_sidebar
 * :view_layouts_base_breadcrumb
-* :view_layouts_base_content
 * :view_layouts_base_body_bottom
 
 More hooks:
