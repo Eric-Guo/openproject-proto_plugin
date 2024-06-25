@@ -143,7 +143,7 @@
       ></a>
       <ul class="simple-filters--filters">
         <li class="simple-filters--filter" *ngIf="isProjectAdmin">
-          <label class="simple-filters--filter-name" for="company">公司:</label>
+          <label class="simple-filters--filter-name" for="company">公司：</label>
           <select
             name="company"
             class="simple-filters--filter-value"
@@ -160,7 +160,7 @@
           </select>
         </li>
         <li class="simple-filters--filter" *ngIf="isProjectAdmin">
-          <label class="simple-filters--filter-name" for="department">部门:</label>
+          <label class="simple-filters--filter-name" for="department">部门：</label>
           <select
             name="department"
             class="simple-filters--filter-value"
@@ -177,7 +177,7 @@
           </select>
         </li>
         <li class="simple-filters--filter">
-          <label class="simple-filters--filter-name" for="major">专业:</label>
+          <label class="simple-filters--filter-name" for="major">专业：</label>
           <select
             name="major"
             class="simple-filters--filter-value"
@@ -194,7 +194,7 @@
           </select>
         </li>
         <li class="simple-filters--filter">
-          <label class="simple-filters--filter-name" for="role_id">角色:</label>
+          <label class="simple-filters--filter-name" for="role_id">角色：</label>
           <select
             name="role_id"
             class="simple-filters--filter-value"
@@ -211,7 +211,7 @@
           </select>
         </li>
         <li class="simple-filters--filter">
-          <label class="simple-filters--filter-name" for="name">名称:</label>
+          <label class="simple-filters--filter-name" for="name">名称：</label>
           <input
             type="text"
             name="name"
@@ -221,7 +221,7 @@
           >
         </li>
         <li class="simple-filters--filter">
-          <label class="simple-filters--filter-name" for="email">邮箱:</label>
+          <label class="simple-filters--filter-name" for="email">邮箱：</label>
           <input
             type="text"
             name="email"
@@ -343,16 +343,13 @@
           <tr
             *ngIf="groupMember.type === 'group'"
             class="member group"
-            [ngStyle]="{
-              backgroundColor: '#f8f8f8',
-            }"
+            [ngStyle]="{ 'background-color': colorMode == 'lightHighContrast' ? '#fff' : '' }"
           >
             <td [colSpan]="isProjectAdmin ? '10' : '8'">
               <div
                 [ngStyle]="{
                   display: 'flex',
                   alignItems: 'center',
-                  color: 'rgb(46, 46, 46)',
                 }"
               >
                 <span class="spot-icon spot-icon_group"></span>

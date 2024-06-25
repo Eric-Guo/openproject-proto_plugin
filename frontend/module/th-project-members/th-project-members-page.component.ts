@@ -10,6 +10,7 @@ import { NgForm } from '@angular/forms';
 import * as ExcelJs from 'exceljs';
 import { saveAs } from 'file-saver';
 import { catchError } from 'rxjs';
+import { colorModes, ColorsService } from 'core-app/shared/components/colors/colors.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 import { I18nService } from 'core-app/core/i18n/i18n.service';
@@ -69,6 +70,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   @ViewChild('importInput') importInput:ElementRef<HTMLInputElement>;
 
+  public colorMode: string;
+
   public roles:RoleResource[] = [];
 
   public members:MembershipResource[] = [];
@@ -105,6 +108,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   public importData:ImportDatum[] = [];
 
   constructor(
+    readonly colors:ColorsService,
     readonly apiV3Service:ApiV3Service,
     readonly currentProject:CurrentProjectService,
     readonly i18n:I18nService,
@@ -121,6 +125,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit():void {
     this.indicator = this.loadingIndicator.indicator('members-module');
+    this.colorMode = this.colors.colorMode();
     this.getMembers();
     this.filterForm.valueChanges?.subscribe((value:typeof this.filterFormData) => {
       if (value.company !== this.selectedCompany) {
