@@ -3,6 +3,7 @@
 require 'active_support/dependencies'
 require 'open_project/plugins'
 require_relative 'patches/api/user_representer'
+require_relative 'patches/api/notification_representer'
 
 module OpenProject::ThPlugin
   class Engine < ::Rails::Engine
@@ -73,6 +74,8 @@ module OpenProject::ThPlugin
 
     extend_api_response(:v3, :users, :user,
                         &::OpenProject::ThPlugin::Patches::API::UserRepresenter.extension)
+    extend_api_response(:v3, :notifications, :notification,
+                        &::OpenProject::ThPlugin::Patches::API::NotificationRepresenter.extension)
 
     config.after_initialize do
       OpenProject::Static::Homescreen.manage :blocks do |blocks|
