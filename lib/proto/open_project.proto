@@ -7,7 +7,7 @@ message TemplateDataItem {
   string color = 2;
 }
 
-// templateID:模板ID
+// templateID:模板 ID
 // data first:标题
 //      keynote1:值
 //      keynote2:值
@@ -15,7 +15,7 @@ message TemplateDataItem {
 //      ...
 //      remark:备注
 // toMail 用户邮箱
-// toUserID op用户ID
+// toUserID op 用户 ID
 message MessageRequest {
   string templateID = 1;
   map<string, TemplateDataItem> data = 2; 
@@ -80,7 +80,7 @@ message GetPdfResp {
 service OpService {
   rpc SendMessage(MessageRequest) returns(Result);
   rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
-  rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(RespUser);
-  rpc SendWcWorkerMessage(WorkerMessageReq) returns(RespUser);
+  rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(Result);
+  rpc SendWcWorkerMessage(WorkerMessageReq) returns(Result);
   rpc GetPdf(GetPdfReq) returns(GetPdfResp);
 }
