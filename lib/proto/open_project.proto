@@ -1,7 +1,6 @@
 syntax = "proto3";
 option go_package = "../opService";
 import "google/protobuf/empty.proto";
-
 message TemplateDataItem {
   string value = 1;
   string color = 2;
@@ -15,13 +14,14 @@ message TemplateDataItem {
 //      ...
 //      remark:备注
 // toMail 用户邮箱
+// url:外部链接
 // toUserID op 用户 ID
 message MessageRequest {
   string templateID = 1;
   map<string, TemplateDataItem> data = 2; 
   string url = 3;
-  string toLogin = 5;
   int64 toUserID = 4;
+  string toLogin= 5;
 }
 
 // code:0 返回正确
@@ -41,6 +41,10 @@ message Template {
 
 message GetTemplateResp {
   repeated Template templates = 1;
+}
+
+message RespUser {
+  string mail = 1;
 }
 
 message GetUserInfoByCodeReq {
@@ -80,7 +84,7 @@ message GetPdfResp {
 service OpService {
   rpc SendMessage(MessageRequest) returns(Result);
   rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
-  rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(Result);
+  rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(RespUser);
   rpc SendWcWorkerMessage(WorkerMessageReq) returns(Result);
   rpc GetPdf(GetPdfReq) returns(GetPdfResp);
 }
