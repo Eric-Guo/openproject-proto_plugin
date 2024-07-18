@@ -13,6 +13,8 @@ module Cybros
 
     has_one :stfreinstate, -> { active }, class_name: 'Hrdw::HrdwStfreinstateBi', foreign_key: :clerkcode, primary_key: :clerk_code
 
+    has_many :work_hours_projects, class_name: 'Bi::WorkHoursProject', foreign_key: :clerkcode, primary_key: :clerk_code
+
     def profession
       stfreinstate&.profession
     end
