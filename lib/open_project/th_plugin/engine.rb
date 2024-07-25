@@ -52,6 +52,11 @@ module OpenProject::ThPlugin
 
     add_cron_jobs do
       {
+        "ThPlugin::SyncCybrosUserStatusJob": {
+          cron: '35 23 * * *', # Run once per night at 11:35pm
+          class: ThPlugin::SyncCybrosUserStatusJob.name
+        },
+
         "ThPlugin::AddActiveDepartmentAsGroupJob": {
           cron: "40 23 * * *", # Run once per night at 11:40pm
           class: ThPlugin::AddActiveDepartmentAsGroupJob.name
