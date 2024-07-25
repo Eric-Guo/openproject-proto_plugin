@@ -4,9 +4,13 @@ class ThPlugin::SyncCybrosUserStatusJob < ApplicationJob
       next if user.staff.blank?
 
       if user.staff.locked_at.blank?
-        user.activate if user.status != 'active'
+        if user.status != 'active'
+          user.activate
+          user.save
+        end
       else
         user.lock
+        user.save
       end
     end
   end
