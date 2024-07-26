@@ -99,11 +99,11 @@ GEM
       rake (>= 13)
     googleapis-common-protos-types (1.15.0)
       google-protobuf (>= 3.18, < 5.a)
-    grpc (1.65.0)
+    grpc (1.65.1)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
-    grpc-tools (1.65.0)
-    gruf (2.20.0)
+    grpc-tools (1.65.1)
+    gruf (2.20.1)
       activesupport (> 4)
       concurrent-ruby (> 1)
       grpc (~> 1.10)
@@ -209,4 +209,4 @@ DEPENDENCIES
   openproject-th_plugin!
 
 BUNDLED WITH
-   2.5.10
+   2.5.16
