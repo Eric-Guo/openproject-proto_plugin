@@ -83,13 +83,14 @@ module OpenProject::ThPlugin
     extend_api_response(:v3, :notifications, :notification,
                         &::OpenProject::ThPlugin::Patches::API::NotificationRepresenter.extension)
 
-    config.after_initialize do
-      OpenProject::Static::Homescreen.manage :blocks do |blocks|
-        blocks.push(
-          { partial: 'homescreen_block', if: Proc.new { true } }
-        )
-      end
-    end
+    # No homescreen block
+    # config.after_initialize do
+    #   OpenProject::Static::Homescreen.manage :blocks do |blocks|
+    #     blocks.push(
+    #       { partial: 'homescreen_block', if: Proc.new { true } }
+    #     )
+    #   end
+    # end
 
     config.after_initialize do
       OpenProject::Notifications.subscribe 'user_invited' do |token|
