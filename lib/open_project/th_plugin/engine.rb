@@ -73,8 +73,6 @@ module OpenProject::ThPlugin
     patches %i[Member User Group]
 
     config.to_prepare do
-      # No homescreen_after_links
-      # ::OpenProject::ThPlugin::Hooks
       ::OpenProject::ThPlugin::Patches::MembersPatch.mixin!
     end
 
