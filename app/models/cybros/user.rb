@@ -16,7 +16,12 @@ module Cybros
     has_many :work_hours_projects, class_name: 'Bi::WorkHoursProject', foreign_key: :clerkcode, primary_key: :clerk_code
 
     def profession
-      stfreinstate&.profession
+      raw_profession = stfreinstate&.profession
+      if raw_profession == '机电'
+        stfreinstate&.gxname&.gsub('子公司', '')
+      else
+        raw_profession
+      end
     end
   end
 end
