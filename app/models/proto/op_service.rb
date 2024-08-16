@@ -19,6 +19,7 @@ module Proto
       rpc :GetUserInfoByCode, ::GetUserInfoByCodeReq, ::RespUser
       rpc :SendWcWorkerMessage, ::WorkerMessageReq, ::Result
       rpc :GetPdf, ::GetPdfReq, ::GetPdfResp
+      rpc :ShowEstimateButton, ::PlmProjectReq, ::ShowEstimateButtonResp
 
       def self.current_client
         @@current_client ||= ::Gruf::Client.new(service: Proto::OpService)

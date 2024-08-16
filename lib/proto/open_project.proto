@@ -81,10 +81,20 @@ message GetPdfResp {
   string url = 1;
 }
 
+message PlmProjectReq {
+  int64 ProjectID = 1;
+}
+
+message ShowEstimateButtonResp {
+  // 概算按钮是否显示
+  bool show = 1;
+}
+
 service OpService {
   rpc SendMessage(MessageRequest) returns(Result);
   rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
   rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(RespUser);
   rpc SendWcWorkerMessage(WorkerMessageReq) returns(Result);
   rpc GetPdf(GetPdfReq) returns(GetPdfResp);
+  rpc ShowEstimateButton(PlmProjectReq) returns(ShowEstimateButtonResp);
 }
