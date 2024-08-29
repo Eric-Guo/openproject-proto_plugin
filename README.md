@@ -47,10 +47,10 @@ Once you've done that, **switch to the OpenProject core directory** and run:
 ./bin/setup_dev
 ```
 
-While you're in the root of the OpenProject core, we recommend you export the OpenProject core path as `$OPENPROJECT_ROOT`.
+While you're in the root of the OpenProject core, we recommend you export the OpenProject core path as `$OPENPROJECT_CORE`.
 
 ```bash
-export OPENPROJECT_ROOT=$(pwd)
+export OPENPROJECT_CORE=$(pwd)
 ```
 
 This will make the plugin known to the OpenProject core with bundler and optionally link a frontend directory into the core (more on that later).
@@ -82,7 +82,7 @@ In the following sections we will explain some common features that you may want
 Each section will list the relevant files you may want to look at and explain the features. Beyond that there are also code comments in the respective files which provide further details.
 
 ### Frontend linking
-This proto plugin contains an Angular frontend part. The way the Angular CLI works, it needs to build the project from a common root folder. That is located at `$OPENPROJECT_ROOT/frontend`.
+This proto plugin contains an Angular frontend part. The way the Angular CLI works, it needs to build the project from a common root folder. That is located at `$OPENPROJECT_CORE/frontend`.
 
 To make your plugin's frontend available to the OpenProject core, it is being symlinked into `$OPENPROJECT_CORE/frontend/src/app/features/plugins/linked/your-plugin-name`. This is being done by the `bin/setup_dev` script, which needs to run whenever you add or remove a plugin from your Gemfile.
 
@@ -92,7 +92,7 @@ JS files in `/frontend` import other modules in the core app with the `core-app/
 
 ### Rails generators
 
-The plugin comes with an executable `bin/rails` which you can use when calling rails generators for generating everything. You will have to define `OPENPROJECT_ROOT` in your environment for it to work unfortunately, because the plugin requires the core to load.
+The plugin comes with an executable `bin/rails` which you can use when calling rails generators for generating everything. You will have to define `OPENPROJECT_CORE` in your environment for it to work unfortunately, because the plugin requires the core to load.
 
 By `core` we mean the directory under which you originally checked out the OpenProject repository:
 
@@ -104,13 +104,13 @@ $ git checkout dev
 So for example, should the core be located under under `~/dev/openproject/core` you can set it like this, for instance in your `.bashrc`:
 
 ```
-export OPENPROJECT_ROOT=~/dev/openproject/core
+export OPENPROJECT_CORE=~/dev/openproject/core
 ```
 
 or you can just prepend the relevant rails commands like this:
 
 ```
-$ OPENPROJECT_ROOT=~/dev/openproject/core rails generate ...
+$ OPENPROJECT_CORE=~/dev/openproject/core rails generate ...
 ```
 
 Once you've set that up you can use the rails generators as usual.
@@ -127,7 +127,7 @@ $ bundle exec rails generate model Kitten name:string --no-test-framework
 Finally, don't forget to run the migration from the core directory. Please note that you cannot run `db:migrate` or other commands with rails from the engine. You'll have to execute those from the core.
 
 ```
-$ cd $OPENPROJECT_ROOT
+$ cd $OPENPROJECT_CORE
 $ bundle exec rails db:migrate
 ```
 
@@ -158,7 +158,7 @@ The relevant files for the specs are:
 You have to run the specs from within the core. For instance:
 
 ```
-$ cd $OPENPROJECT_ROOT
+$ cd $OPENPROJECT_CORE
 $ RAILS_ENV=test bundle exec rspec `bundle show openproject-th_plugin`/spec/controllers/th_members_controller_spec.rb
 $ RAILS_ENV=test bundle exec rspec `bundle show openproject-th_plugin`/spec/features/project_kittens_spec.rb
 ```
@@ -174,7 +174,7 @@ The relevant files for the seeders are:
 You can define so called "Seeders" for your plugin which get called when `rake db:seed` is run in the core. For example:
 
 ```
-$ cd OPENPROJECT_ROOT
+$ cd $OPENPROJECT_CORE
 $ bundle exec rails db:seed
 ```
 
