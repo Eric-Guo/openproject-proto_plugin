@@ -22,7 +22,7 @@ module OpenProject::ThPlugin
 
     module InstanceMethods
       def set_notification_settings
-        ns = NotificationSetting.where(project_id:).where(user_id:).take || NotificationSetting.new(project_id:, user_id:)
+        ns = NotificationSetting.find_by(project_id:, user_id:) || NotificationSetting.new(project_id:, user_id:)
 
         return unless ns.new_record?
 
