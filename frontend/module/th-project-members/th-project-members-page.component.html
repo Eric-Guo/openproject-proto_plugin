@@ -5,7 +5,7 @@
     </div>
     <ul class="toolbar-items">
       <li
-        *ngIf="allowAddMember && (isProjectAdmin$ | async)"
+        *ngIf="(isProjectAdmin$ | async)"
         class="toolbar-item"
       >
         <button
@@ -29,7 +29,7 @@
           <i class="button--icon icon-filter" aria-hidden="true"></i>
         </button>
       </li>
-      <li class="toolbar-item" *ngIf="allowAddMember">
+      <li class="toolbar-item" *ngIf="(isProjectAdmin$ | async)">
         <input
           #importInput
           type="file"

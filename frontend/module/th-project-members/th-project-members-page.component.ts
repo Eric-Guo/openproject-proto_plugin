@@ -202,10 +202,6 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
     this.setCurrentGroupMembers();
   }
 
-  get allowAddMember() {
-    return !!this.project && !!this.project.updateImmediately;
-  }
-
   get autoCompleterUrl() {
     if (!this.currentProject.identifier) return null;
     return `/projects/${this.currentProject.identifier}/members/autocomplete_for_member.json`;
