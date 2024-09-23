@@ -21,6 +21,8 @@ import { RoleResource } from 'core-app/features/hal/resources/role-resource';
 import { ApiV3FilterBuilder } from 'core-app/shared/helpers/api-v3/api-v3-filter-builder';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { HttpClient } from '@angular/common/http';
+import { CurrentUserService } from 'core-app/core/current-user/current-user.service';
+import { Observable } from 'rxjs';
 
 type TableRow = {
   name:string;
@@ -107,6 +109,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   public importData:ImportDatum[] = [];
 
+  public isProjectAdmin$: Observable<boolean>;
+
   constructor(
     readonly colors:ColorsService,
     readonly apiV3Service:ApiV3Service,
@@ -116,11 +120,13 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
     readonly toastService:ToastService,
     readonly httpClient:HttpClient,
     readonly cdRef:ChangeDetectorRef,
+    readonly currentUser: CurrentUserService,
   ) {}
 
   ngOnInit():void {
     this.getProject();
     this.getRoles();
+    this.initializeAdminCheck();
   }
 
   ngAfterViewInit():void {
@@ -133,6 +139,13 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
         this.filterFormData.department = '';
       }
     });
+  }
+
+  private initializeAdminCheck(): void {
+    this.isProjectAdmin$ = this.currentUser.hasCapabilities$(
+      ['memberships/update'],
+      this.currentProject.id
+    );
   }
 
   getRoles() {
@@ -201,11 +214,6 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   get addMemberUrl() {
     if (!this.currentProject.identifier) return null;
     return `/projects/${this.currentProject.identifier}/members.json`;
-  }
-
-  get isProjectAdmin() {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    return !!this.project && !!this.project.updateImmediately && !!this.project.updateImmediately.href;
   }
 
   handleImport = () => {

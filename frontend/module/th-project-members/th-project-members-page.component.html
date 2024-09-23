@@ -5,7 +5,7 @@
     </div>
     <ul class="toolbar-items">
       <li
-        *ngIf="allowAddMember"
+        *ngIf="allowAddMember && (isProjectAdmin$ | async)"
         class="toolbar-item"
       >
         <button
@@ -142,7 +142,7 @@
         (click)="closeAction()"
       ></a>
       <ul class="simple-filters--filters">
-        <li class="simple-filters--filter" *ngIf="isProjectAdmin">
+        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async)">
           <label class="simple-filters--filter-name" for="company">公司：</label>
           <select
             name="company"
@@ -159,7 +159,7 @@
             </option>
           </select>
         </li>
-        <li class="simple-filters--filter" *ngIf="isProjectAdmin">
+        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async)">
           <label class="simple-filters--filter-name" for="department">部门：</label>
           <select
             name="department"
@@ -280,7 +280,7 @@
               </div>
             </div>
           </th>
-          <th *ngIf="isProjectAdmin">
+          <th *ngIf="(isProjectAdmin$ | async)">
             <div class="generic-table--sort-header-outer">
               <div class="generic-table--sort-header">
                 <span>
@@ -289,7 +289,7 @@
               </div>
             </div>
           </th>
-          <th *ngIf="isProjectAdmin">
+          <th *ngIf="(isProjectAdmin$ | async)">
             <div class="generic-table--sort-header-outer">
               <div class="generic-table--sort-header">
                 <span>
@@ -338,14 +338,14 @@
             [roles]="roles"
             [users]="users"
             [reloadMembers]="getMembers"
-            [isProjectAdmin]="isProjectAdmin"
+            [isProjectAdmin]="(isProjectAdmin$ | async)"
           ></th-project-members-row>
           <tr
             *ngIf="groupMember.type === 'group'"
             class="member group"
             [ngStyle]="{ 'background-color': colorMode == 'lightHighContrast' ? '#fff' : '' }"
           >
-            <td [colSpan]="isProjectAdmin ? '10' : '8'">
+            <td [colSpan]="(isProjectAdmin$ | async) ? '10' : '8'">
               <div
                 [ngStyle]="{
                   display: 'flex',
