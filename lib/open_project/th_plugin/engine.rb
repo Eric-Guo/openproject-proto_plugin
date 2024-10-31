@@ -39,6 +39,14 @@ module OpenProject::ThPlugin
                      angular_kittens: %i[show]
                    },
                    permissible_on: [:project]
+
+        permission :view_all_project_info,
+                   {
+                     projects: [:show]
+                   },
+                   permissible_on: :global,
+                   require: :loggedin,
+                   grant_to_admin: true
       end
 
       menu :project_menu,
