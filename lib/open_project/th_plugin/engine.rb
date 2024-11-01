@@ -42,7 +42,7 @@ module OpenProject::ThPlugin
 
         permission :view_all_project_info,
                    {
-                     projects: [:show]
+                     projects: %i[show index],
                    },
                    permissible_on: :global,
                    require: :loggedin,
