@@ -92,6 +92,5 @@ export function initializeThPlugin(injector:Injector) {
 })
 export class PluginModule {
   constructor(injector:Injector) {
-    registerCustomElement('opce-kitten', KittenComponent, { injector });
   }
 }
