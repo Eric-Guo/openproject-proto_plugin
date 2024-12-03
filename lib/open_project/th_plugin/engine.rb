@@ -56,6 +56,15 @@ module OpenProject::ThPlugin
            if: ->(project) { project.module_enabled?('th_members_module') },
            icon: 'id-badge',
            before: :settings
+
+      menu :project_menu,
+           :th_project_manage,
+           ->(project) { "https://ith-workspace.thape.com.cn/projects/#{project.id}" },
+           caption: :label_th_project_plural,
+           if: ->(project) { User.current.allowed_in_project?(:view_th_project_more, project) },
+           skip_permissions_check: true,
+           icon: 'op-gitlab-pipeline-status-running',
+           before: :settings
     end
 
     add_cron_jobs do
