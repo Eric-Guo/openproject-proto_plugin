@@ -2,3 +2,7 @@
 zh-CN:
   js:
     th_plugin_name: "天华人员插件"
+    grid:
+      widgets:
+        shortcut:
+          title: '快捷方式'

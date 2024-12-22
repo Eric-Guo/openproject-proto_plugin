@@ -2,3 +2,7 @@
 en:
   js:
     th_plugin_name: 'Thape member'
+    grid:
+      widgets:
+        shortcut:
+          title: 'Shortcut'
