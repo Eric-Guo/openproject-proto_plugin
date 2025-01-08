@@ -9,8 +9,7 @@ class ThPlugin::SyncCybrosUserStatusJob < ApplicationJob
           user.save
         end
       else
-        user.lock
-        user.save
+        user.locked!
       end
     end
   end
