@@ -23,5 +23,9 @@ module Cybros
         raw_profession
       end
     end
+
+    def readonly?
+      false
+    end
   end
 end
