@@ -3,12 +3,7 @@ class ThPlugin::SyncCybrosUserStatusJob < ApplicationJob
     User.where('mail LIKE ?', '%@thape.com.cn').find_each do |user|
       next if user.staff.blank?
 
-      if user.staff.locked_at.blank?
-        if user.status != 'active'
-          user.activate
-          user.save
-        end
-      else
+      if user.staff.locked_at.present?
         user.locked!
       end
     end
