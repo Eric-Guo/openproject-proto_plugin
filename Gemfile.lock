@@ -109,7 +109,7 @@ GEM
       json (>= 2.3)
       slop (>= 4.6)
       zeitwerk (>= 2)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.0)
     irb (1.14.3)
