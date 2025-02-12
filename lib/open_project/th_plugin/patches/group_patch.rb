@@ -5,7 +5,7 @@ module OpenProject::ThPlugin
     end
 
     module InstanceMethods
-      def add_members_to_group(action_user, new_users)
+      def add_and_remove_members_to_group(action_user, new_users, remove_user_ids)
         user_ids = new_users.collect(&:id)
 
         # Ensure we use pluck to get the current DB version of user_ids
@@ -13,7 +13,7 @@ module OpenProject::ThPlugin
 
         call = Groups::UpdateService
           .new(user: action_user, model: self)
-          .call(user_ids: (current_user_ids + user_ids).uniq)
+          .call(user_ids: (current_user_ids + user_ids - remove_user_ids).uniq)
 
         call.on_success do
           Rails.logger.debug "[ThPlugin groups] Added users #{user_ids} to #{name}"
