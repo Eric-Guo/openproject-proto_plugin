@@ -7,8 +7,10 @@ class ThPlugin::AddActiveUserToGroupJob < ApplicationJob
       group = Group.find_by(name: group_name)
       next if group.blank?
 
-      users_in_op = position_users.collect { |pu| pu.user.op_user }.reject(&:nil?).uniq
-      group.add_and_remove_members_to_group(User.system, users_in_op, [])
+      users_in_op_ids = position_users.collect { |pu| pu.user.op_user }.reject(&:nil?).uniq.collect(&:id)
+      current_user_ids = group.group_users.pluck(:user_id)
+      remove_user_ids = Cybros::User.where(id: (users_in_op_ids+current_user_ids).uniq).where.not(locked_at: nil).pluck(:user_id)
+      group.add_and_remove_members_to_group(User.system, users_in_op_ids, remove_user_ids)
     end
   end
 end
