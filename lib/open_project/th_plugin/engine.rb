@@ -61,7 +61,7 @@ module OpenProject::ThPlugin
            :th_project_manage,
            ->(project) { "https://ith-workspace.thape.com.cn/projects/#{project.id}" },
            caption: :label_th_project_plural,
-           if: ->(project) { User.current.allowed_in_project?(:view_th_project_more, project) },
+           if: ->(project) { User.current.allowed_in_project?(:view_th_project_more, project) || User.current.allowed_globally?(:view_all_project_info) },
            skip_permissions_check: true,
            icon: 'op-gitlab-pipeline-status-running',
            before: :settings
