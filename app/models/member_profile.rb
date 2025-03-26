@@ -41,9 +41,11 @@ class MemberProfile < ApplicationRecord
 
   def set_default_major
     return unless member.principal.present? && (/@thape\.com\.cn$/ === member.principal.mail)
+
     staff = member.principal.staff
-    return unless staff.present? && staff.profession.present?
-    self.major = staff.profession
+    return unless staff.present? && staff.major_name.present?
+
+    self.major = staff.major_name
   end
 
   def update_principal_name
