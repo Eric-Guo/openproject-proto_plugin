@@ -7,12 +7,11 @@ require_relative "open_project_pb"
 module Proto
   module OpService
     class Service
-
       include ::GRPC::GenericService
 
       self.marshal_class_method = :encode
       self.unmarshal_class_method = :decode
-      self.service_name = "OpService"
+      self.service_name = 'OpService'
 
       rpc :SendMessage, ::MessageRequest, ::Result
       rpc :GetTemplates, ::Google::Protobuf::Empty, ::GetTemplateResp
@@ -20,7 +19,6 @@ module Proto
       rpc :SendWcWorkerMessage, ::WorkerMessageReq, ::Result
       rpc :GetPdf, ::GetPdfReq, ::GetPdfResp
       rpc :ShowEstimateButton, ::PlmProjectReq, ::ShowEstimateButtonResp
-
       def self.current_client
         @@current_client ||= ::Gruf::Client.new(service: Proto::OpService)
       end
