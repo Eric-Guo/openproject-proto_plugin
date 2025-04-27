@@ -28,7 +28,7 @@ module OpenProject::ThPlugin
               'main-menu-bg-selected-background' => '#425167',
               'main-menu-bg-hover-background' => '#475974',
             },
-            logo: 'plm/logo_plm_dark.png'
+            logo: 'logo_plm_dark.png'
           }
         end
 
@@ -44,7 +44,7 @@ module OpenProject::ThPlugin
               'main-menu-bg-selected-background' => '#797291',
               'main-menu-bg-hover-background' => '#8F89A3',
             },
-            logo: 'plm/logo_plm_dark.png'
+            logo: 'logo_plm_dark.png'
           }
         end
 
@@ -60,7 +60,7 @@ module OpenProject::ThPlugin
               'main-menu-bg-selected-background' => '#797291',
               'main-menu-bg-hover-background' => '#8F89A3',
             },
-            logo: 'plm/logo_plm_new.png'
+            logo: 'logo_plm_new.png'
           }
         end
 
@@ -76,7 +76,7 @@ module OpenProject::ThPlugin
               'main-menu-bg-selected-background' => '#E6EBF9',
               'main-menu-bg-hover-background' => '#E6EBF9',
             },
-            logo: 'plm/logo_plm.png'
+            logo: 'logo_plm.png'
           }
         end
       end

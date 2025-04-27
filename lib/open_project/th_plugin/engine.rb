@@ -117,9 +117,9 @@ module OpenProject::ThPlugin
 
     assets %w(
       kitty.png
-      plm/logo_plm_dark.png
-      plm/logo_plm_new.png
-      plm/logo_plm.png
+      logo_plm_dark.png
+      logo_plm_new.png
+      logo_plm.png
       openid_connect/auth_provider-th.png
     )
   end
