@@ -5,20 +5,21 @@ class ThPlugin::SendJoinToWxWorkJob < ApplicationJob
     member = Member.find(id)
     user = member.principal
 
-    return unless user.mail.end_with?("@thape.com.cn")
+    return unless user.mail.end_with?('@thape.com.cn')
+    return if [205].include?(user.id) # skip PPMAdmin@thape.com.cn
 
     project = member.project
 
     data = {
       toUserID: user.id,
-      title: "项目通知",
+      title: '项目通知',
       description: [
-        "<div class=\"highlight\">加入新项目</div>",
+        '<div class="highlight">加入新项目</div>',
         "<div class=\"normal\">项目名称：#{project.name}</div>",
-        "<div class=\"normal\">角色名称：#{member.roles.pluck(:name).join(',')}</div>",
-      ].join(""),
+        "<div class=\"normal\">角色名称：#{member.roles.pluck(:name).join(',')}</div>"
+      ].join(''),
       url: Rails.application.routes.url_helpers.root_url(host: Setting.host_name, protocol: Setting.protocol),
-      buttonText: "详情",
+      buttonText: '详情',
     }
 
     Proto::OpService::Service.current_client.call(:SendWcWorkerMessage, data)
