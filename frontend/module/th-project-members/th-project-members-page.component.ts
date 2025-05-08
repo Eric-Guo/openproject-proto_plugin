@@ -222,6 +222,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
     email:string;
     roles:string;
     statusName:string;
+    company:string;
+    department:string;
     position:string;
     major:string;
     mobile:string;
@@ -235,6 +237,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       { header: '电子邮件（必填）', key: 'email', width: 30 },
       { header: '角色（必填）', key: 'roles', width: 20 },
       { header: '状态', key: 'statusName', width: 20 },
+      { header: '公司', key: 'company', width: 20 },
+      { header: '部门', key: 'department', width: 20 },
       { header: '职位', key: 'position', width: 20 },
       { header: '专业', key: 'major', width: 20 },
       { header: '手机号', key: 'mobile', width: 20 },
@@ -253,7 +257,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       name: [
         `角色值：${roleNames.join('、')}`,
         '必填项：电子邮件、角色',
-        '选填项：名称、职位、专业、手机号',
+        '选填项：名称、公司、部门、职位、专业、手机号',
         '一行一条数据，不支持合并表格数据，否则系统无法正确读取',
       ].join('\n'),
     });
@@ -283,6 +287,8 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       email: member.email,
       roles: member.roles.map((item) => item.name).join(','),
       statusName: member.statusName,
+      company: member.profile?.company || '',
+      department: member.profile?.department || '',
       position: member.profile?.position || '',
       major: member.profile?.major || '',
       mobile: member.profile?.mobile || '',
@@ -298,6 +304,28 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   closeAction() {
     this.currentAction = null;
+  }
+
+  get companies() {
+    if (!this.members) return [];
+    const companies:Set<string> = new Set();
+    this.members.forEach((member) => {
+      if (member.profile && member.profile.company) {
+        companies.add(member.profile.company.trim());
+      }
+    });
+    return [...companies];
+  }
+
+  get departments() {
+    if (!this.members || !this.selectedCompany) return [];
+    const departments:Set<string> = new Set();
+    this.members.forEach((member) => {
+      if (member.profile && member.profile.department && member.profile.company === this.selectedCompany) {
+        departments.add(member.profile.department.trim());
+      }
+    });
+    return [...departments];
   }
 
   get majors() {

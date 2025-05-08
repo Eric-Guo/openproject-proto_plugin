@@ -34,6 +34,28 @@
   <td class="status">
     {{ statusName }}
   </td >
+  <td class="company" *ngIf="isProjectAdmin">
+    <ng-template [ngIf]="editing" [ngIfElse]="toEditCompany">
+      <input
+        style="width: 100%;"
+        [(ngModel)]="formData.company"
+      />
+    </ng-template>
+    <ng-template #toEditCompany>
+      {{ company }}
+    </ng-template>
+  </td>
+  <td class="department" *ngIf="isProjectAdmin">
+    <ng-template [ngIf]="editing" [ngIfElse]="toEditDepartment">
+      <input
+        style="width: 100%;"
+        [(ngModel)]="formData.department"
+      />
+    </ng-template>
+    <ng-template #toEditDepartment>
+      {{ department }}
+    </ng-template>
+  </td>
   <td class="major">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditMajor">
       <input
