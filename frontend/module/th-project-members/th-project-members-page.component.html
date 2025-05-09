@@ -44,6 +44,7 @@
           [importHandle]="handleImport"
           [exportHandle]="handleExport"
           [downloadTemplateHandle]="handleDownloadTemplate"
+          [currentProject]="currentProject.project"
         >
           <i class="button--icon icon-show-more"></i>
         </button>
@@ -142,7 +143,7 @@
         (click)="closeAction()"
       ></a>
       <ul class="simple-filters--filters">
-        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async)">
+        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async) && currentProject?.thTypeId == 2">
           <label class="simple-filters--filter-name" for="company">公司：</label>
           <select
             name="company"
@@ -159,7 +160,7 @@
             </option>
           </select>
         </li>
-        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async)">
+        <li class="simple-filters--filter" *ngIf="(isProjectAdmin$ | async) && currentProject?.thTypeId == 2">
           <label class="simple-filters--filter-name" for="department">部门：</label>
           <select
             name="department"
@@ -280,7 +281,7 @@
               </div>
             </div>
           </th>
-          <th *ngIf="(isProjectAdmin$ | async)">
+          <th *ngIf="(isProjectAdmin$ | async) && currentProject?.thTypeId == 2">
             <div class="generic-table--sort-header-outer">
               <div class="generic-table--sort-header">
                 <span>
@@ -289,7 +290,7 @@
               </div>
             </div>
           </th>
-          <th *ngIf="(isProjectAdmin$ | async)">
+          <th *ngIf="(isProjectAdmin$ | async) && currentProject?.thTypeId == 2">
             <div class="generic-table--sort-header-outer">
               <div class="generic-table--sort-header">
                 <span>
@@ -339,6 +340,7 @@
             [users]="users"
             [reloadMembers]="getMembers"
             [isProjectAdmin]="(isProjectAdmin$ | async)"
+            [currentProject]="currentProject.project"
           ></th-project-members-row>
           <tr
             *ngIf="groupMember.type === 'group'"

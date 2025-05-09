@@ -9,6 +9,7 @@ import { LoadingIndicatorService } from 'core-app/core/loading-indicator/loading
 import { MembershipResource } from 'core-app/features/hal/resources/membership-resource';
 import { RoleResource } from 'core-app/features/hal/resources/role-resource';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
+import { ProjectResource } from 'core-app/features/hal/resources/project-resource';
 
 // eslint-disable-next-line change-detection-strategy/on-push
 @Component({
@@ -25,6 +26,8 @@ export class ThProjectMembersRowComponent {
   @Input() reloadMembers:() => void;
 
   @Input() isProjectAdmin:boolean;
+
+  @Input() currentProject:ProjectResource;
 
   public invitedTip = '用户已被邀请，正在等待注册';
 

@@ -34,7 +34,7 @@
   <td class="status">
     {{ statusName }}
   </td >
-  <td class="company" *ngIf="isProjectAdmin">
+  <td class="company" *ngIf="isProjectAdmin && currentProject?.thTypeId == 2">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditCompany">
       <input
         style="width: 100%;"
@@ -45,7 +45,7 @@
       {{ company }}
     </ng-template>
   </td>
-  <td class="department" *ngIf="isProjectAdmin">
+  <td class="department" *ngIf="isProjectAdmin && currentProject?.thTypeId == 2">
     <ng-template [ngIf]="editing" [ngIfElse]="toEditDepartment">
       <input
         style="width: 100%;"

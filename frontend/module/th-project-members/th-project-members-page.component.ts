@@ -124,6 +124,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   ngOnInit():void {
     this.getRoles();
     this.initializeAdminCheck();
+    this.currentProject.detect();
   }
 
   ngAfterViewInit():void {
