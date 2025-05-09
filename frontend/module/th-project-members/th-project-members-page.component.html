@@ -340,7 +340,7 @@
             [users]="users"
             [reloadMembers]="getMembers"
             [isProjectAdmin]="(isProjectAdmin$ | async)"
-            [currentProject]="currentProject.project"
+            [currentProject]="currentProject"
           ></th-project-members-row>
           <tr
             *ngIf="groupMember.type === 'group'"
