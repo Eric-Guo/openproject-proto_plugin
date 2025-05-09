@@ -82,8 +82,6 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   public currentGroupMembers:(GroupMembersItemGroup | GroupMembersItemMember)[] = [];
 
-  public project:ProjectResource;
-
   public indicator:LoadingIndicator;
 
   public filterFormData = {
@@ -124,7 +122,6 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit():void {
-    this.getProject();
     this.getRoles();
     this.initializeAdminCheck();
   }
@@ -168,14 +165,6 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       this.setCurrentMembers();
     });
   };
-
-  getProject() {
-    if (this.currentProject.id) {
-      this.apiV3Service.projects.id(this.currentProject.id).get().subscribe((res) => {
-        this.project = res;
-      });
-    }
-  }
 
   setCurrentMembers() {
     this.currentMembers = this.members.filter((member) => {
@@ -295,7 +284,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       remark: member.profile?.remark || '',
     }));
 
-    await this.exportSheet(rows, `${this.currentProject?.name || '项目'}-人员列表`);
+    await this.exportSheet(rows, `${this.currentProject.name || '项目'}-人员列表`);
   };
 
   openAction(name:Exclude<typeof this.currentAction, null>) {
