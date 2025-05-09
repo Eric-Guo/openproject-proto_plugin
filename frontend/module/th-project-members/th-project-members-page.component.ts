@@ -9,7 +9,7 @@ import {
 import { NgForm } from '@angular/forms';
 import * as ExcelJs from 'exceljs';
 import { saveAs } from 'file-saver';
-import { catchError, map } from 'rxjs';
+import { catchError } from 'rxjs';
 import { colorModes, ColorsService } from 'core-app/shared/components/colors/colors.service';
 import { ApiV3Service } from 'core-app/core/apiv3/api-v3.service';
 import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
@@ -142,12 +142,9 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   }
 
   private initializeAdminCheck(): void {
-    const currentProjectInTotalDesignSpace = this.currentProject.thTypeId == 2;
     this.isProjectAdmin$ = this.currentUser.hasCapabilities$(
       ['memberships/update'],
       this.currentProject.id
-    ).pipe(
-      map(hasCapabilities => hasCapabilities && currentProjectInTotalDesignSpace)
     );
   }
 
