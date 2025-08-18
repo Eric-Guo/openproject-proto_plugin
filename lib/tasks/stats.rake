@@ -3,13 +3,13 @@ require "rails/code_statistics"
 task stats: :more_stats
 
 task :more_stats do
-  %w[Components Contracts Forms Menus Policies Seeders Services Uploaders Validators Workers].each_with_index do |type, i|
-    STATS_DIRECTORIES.insert i + 8, [type, "app/#{type.downcase}"]
-    STATS_DIRECTORIES.insert i * 2 + 11, ["#{type} specs", "spec/#{type.downcase}"]
-    CodeStatistics::TEST_TYPES << "#{type} specs"
+  %w[Components Contracts Forms Menus Policies Seeders Services Uploaders Validators Workers].each do |type|
+    Rails::CodeStatistics.register_directory(type, "app/#{type.downcase}")
+    Rails::CodeStatistics.register_directory("#{type} specs", "spec/#{type.downcase}")
+    Rails::CodeStatistics::TEST_TYPES << "#{type} specs"
   end
-  STATS_DIRECTORIES.insert 10, ["Angular", "frontend/src"]
-  STATS_DIRECTORIES.insert 11, ["Static Libraries", "lib_static"]
-  STATS_DIRECTORIES.insert 12, ["Modules", "modules"]
-  STATS_DIRECTORIES.insert 13, ["Packaging", "packaging"]
+  Rails::CodeStatistics.register_directory("Angular", "frontend/src")
+  Rails::CodeStatistics.register_directory("Static Libraries", "lib_static")
+  Rails::CodeStatistics.register_directory("Modules", "modules")
+  Rails::CodeStatistics.register_directory("Packaging", "packaging")
 end
