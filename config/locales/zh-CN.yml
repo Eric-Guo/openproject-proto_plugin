@@ -9,6 +9,7 @@ zh-CN:
   permission_view_th_plugin_members: "查看人员资料"
   permission_manage_th_plugin_members: "修改人员资料"
   permission_view_all_project_info: "查看所有项目信息"
+  label_th_project_filter: "项目筛选器"
   label_kitten: "猫猫"
   label_kittens: "猫猫猫"
   label_kitten_new: "新的猫猫"
