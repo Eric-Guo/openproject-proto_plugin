@@ -28,6 +28,7 @@ module OpenProject::ThPlugin
         self.lastname = staff.chinese_name
         self.firstname = self.mail.sub(/@thape\.com\.cn$/, "")
         self.mobile = staff.mobile
+        self.clerk_code = staff.clerk_code
 
         position = staff.positions.first
         return unless position.present?
