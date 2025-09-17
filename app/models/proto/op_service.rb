@@ -19,6 +19,12 @@ module Proto
       rpc :SendWcWorkerMessage, ::WorkerMessageReq, ::Result
       rpc :GetPdf, ::GetPdfReq, ::GetPdfResp
       rpc :ShowEstimateButton, ::PlmProjectReq, ::ShowEstimateButtonResp
+      # 待更新里程碑的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
+      rpc :GetUpdateMilestoneProject, ::GetUpdateMilestoneProjectReq, ::GetUpdateMilestoneProjectResp
+      # 待归档的项目列表 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
+      rpc :GetArchiveProjects, ::GetArchiveProjectsReq, ::GetArchiveProjectsResp
+      # 预算超支的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
+      rpc :GetBudgetOverrunProjects, ::GetBudgetOverrunProjectsReq, ::GetBudgetOverrunProjectsResp
       def self.current_client
         @@current_client ||= ::Gruf::Client.new(service: Proto::OpService)
       end
