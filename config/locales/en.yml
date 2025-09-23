@@ -9,7 +9,7 @@ en:
   permission_view_th_plugin_members: "View member profile"
   permission_manage_th_plugin_members: "Edit member profile"
   permission_view_all_project_info: "View all project info"
-  label_th_project_filter: "项目筛选器"
+  label_th_project_filter: "Project advanced filter"
   label_kitten: Kitten
   label_kittens: Kittens
   label_kitten_new: New Kitten
