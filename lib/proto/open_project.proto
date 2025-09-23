@@ -103,8 +103,9 @@ message GetArchiveProjectsReq {
 }
 
 message GetArchiveProjectsResp {
-  
   repeated int64 projectIds = 1;
+  // url
+  string url = 2;
 }
 
 message GetBudgetOverrunProjectsReq {
