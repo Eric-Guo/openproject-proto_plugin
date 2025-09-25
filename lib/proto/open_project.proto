@@ -96,6 +96,8 @@ message GetUpdateMilestoneProjectReq {
 
 message GetUpdateMilestoneProjectResp {
   repeated int64 projectIds = 1;
+  // 总数
+  int64 total = 2;
 }
 
 message GetArchiveProjectsReq {
@@ -106,6 +108,8 @@ message GetArchiveProjectsResp {
   repeated int64 projectIds = 1;
   // url
   string url = 2;
+  // 总数
+  int64 total = 3;
 }
 
 message GetBudgetOverrunProjectsReq {
@@ -116,6 +120,8 @@ message GetBudgetOverrunProjectsResp {
   // 是否显示
   bool show = 1;
   repeated int64 projectIds = 2;
+  // 总数
+  int64 total = 3;
 }
 
 service OpService {
