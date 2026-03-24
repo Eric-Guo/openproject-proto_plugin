@@ -85,8 +85,7 @@ module OpenProject::ThPlugin
       end
 
       def set_default_profile
-        profile = MemberProfile.new(member_id: self.id)
-        profile.save
+        MemberProfile.create_or_find_by!(member_id: self.id)
       end
     end
   end

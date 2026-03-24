@@ -48,7 +48,7 @@ module OpenProject::ThPlugin
         self.members.each do |member|
           next unless member.respond_to?(:profile)
 
-          profile = member.profile || MemberProfile.new(member_id: member.id)
+          profile = MemberProfile.find_by(member_id: member.id) || MemberProfile.create_or_find_by!(member_id: member.id)
 
           if profile.name.blank? && self.respond_to?(:name) && self.name.present?
             profile.name = self.name
@@ -74,7 +74,7 @@ module OpenProject::ThPlugin
             profile.mobile = self.mobile
           end
 
-          profile.save
+          profile.save! if profile.changed?
         end
       end
     end
