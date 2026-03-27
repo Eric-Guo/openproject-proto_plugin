@@ -14,6 +14,7 @@ module Cybros
     has_one :stfreinstate, -> { active }, class_name: 'Hrdw::HrdwStfreinstateBi', foreign_key: :clerkcode, primary_key: :clerk_code
 
     has_many :work_hours_projects, class_name: 'Bi::WorkHoursProject', foreign_key: :clerkcode, primary_key: :clerk_code
+    has_many :assistent_bosses, dependent: :destroy, class_name: "Bi::AssistentForBoss", foreign_key: :user_clerk_code, primary_key: :clerk_code
 
     def profession
       raw_profession = stfreinstate&.profession
@@ -26,6 +27,15 @@ module Cybros
 
     def readonly?
       false
+    end
+
+    def dt_users
+      dt_clerk_codes = assistent_bosses.pluck(:dt_clerk_code).compact_blank.uniq
+      return self.class.none if dt_clerk_codes.empty?
+
+      # `assistent_bosses` is loaded from the BI connection, so this must stay a
+      # two-step lookup instead of a cross-database `has_many :through` join.
+      self.class.where(clerk_code: dt_clerk_codes).in_order_of(:clerk_code, dt_clerk_codes)
     end
   end
 end
