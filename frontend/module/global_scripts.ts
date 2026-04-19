@@ -3,11 +3,9 @@
  * We recommend to use angular pages / components instead
  */
 
-import * as jQuery from 'jquery';
+import jQuery from 'jquery';
 
-(function($) {
-  $(document).ready(function() {
-    // Widget box emphasized by giving it a nice red border.
-    $('#proto-plugin-block').parent().addClass('proto-plugin-widget-box');
-  });
-})(jQuery);
+jQuery(() => {
+  // Widget box emphasized by giving it a nice red border.
+  jQuery('#proto-plugin-block').parent().addClass('proto-plugin-widget-box');
+});
