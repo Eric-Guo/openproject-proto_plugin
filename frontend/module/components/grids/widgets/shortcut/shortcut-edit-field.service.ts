@@ -9,6 +9,7 @@ import { ResourceChangeset } from 'core-app/shared/components/fields/changeset/r
 import { SchemaCacheService } from 'core-app/core/schemas/schema-cache.service';
 import { ICKEditorContext } from 'core-app/shared/components/editor/components/ckeditor/ckeditor.types';
 import { GridResource } from 'core-app/features/hal/resources/grid-resource';
+import { HalSource } from 'core-app/features/hal/interfaces';
 
 @Injectable()
 export class ShortcutEditFieldService extends EditFieldHandler {

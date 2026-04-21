@@ -11,12 +11,21 @@ import { RoleResource } from 'core-app/features/hal/resources/role-resource';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
 import { ProjectResource } from 'core-app/features/hal/resources/project-resource';
 
+function errorMessage(error:unknown):string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
 // eslint-disable-next-line change-detection-strategy/on-push
 @Component({
   selector: 'th-project-members-row',
   templateUrl: './th-project-members-row.component.html',
-  styles: ['th-project-members-row { display: contents; }'],
+  styles: ['th-project-members-row\n  display: contents'],
   encapsulation: ViewEncapsulation.None,
+  standalone: false,
 })
 export class ThProjectMembersRowComponent {
   @Input() roles:RoleResource[] = [];
@@ -107,8 +116,7 @@ export class ThProjectMembersRowComponent {
       this.editing = false;
       this.toastService.addSuccess('更新成功');
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-      this.toastService.addError(err.message);
+      this.toastService.addError(errorMessage(err));
     } finally {
       indicator.stop();
     }
@@ -124,8 +132,7 @@ export class ThProjectMembersRowComponent {
         this.reloadMembers();
         this.toastService.addSuccess('删除成功');
       } catch (err) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-        this.toastService.addError(err.message);
+        this.toastService.addError(errorMessage(err));
       } finally {
         indicator.stop();
       }

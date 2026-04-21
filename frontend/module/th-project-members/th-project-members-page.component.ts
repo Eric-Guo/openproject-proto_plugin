@@ -24,6 +24,14 @@ import { HttpClient } from '@angular/common/http';
 import { CurrentUserService } from 'core-app/core/current-user/current-user.service';
 import { Observable } from 'rxjs';
 
+function errorMessage(error:unknown):string {
+  if (error instanceof Error) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
 type TableRow = {
   name:string;
   email:string;
@@ -64,6 +72,7 @@ type GroupMembersItemMember = {
 @Component({
   selector: 'op-project-members',
   templateUrl: './th-project-members-page.component.html',
+  standalone: false,
 })
 export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   @ViewChild('filterForm') filterForm:NgForm;
@@ -394,9 +403,9 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
             company: parseCell(row.getCell(5)),
             department: parseCell(row.getCell(6)),
             position: parseCell(row.getCell(7)),
-            major: parseCell(row.getCell(7)),
-            mobile: parseCell(row.getCell(8)),
-            remark: parseCell(row.getCell(9)),
+            major: parseCell(row.getCell(8)),
+            mobile: parseCell(row.getCell(9)),
+            remark: parseCell(row.getCell(10)),
           };
           if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(rowData.email)) return;
           if (!emailCounts[rowData.email]) emailCounts[rowData.email] = 0;
@@ -408,8 +417,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       if (rows.length === 0) throw new Error('未找到人员信息');
       await this.setImportData(rows);
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-      this.toastService.addError(err.message);
+      this.toastService.addError(errorMessage(err));
     }
   }
 
@@ -502,8 +510,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       }));
       this.toastService.addSuccess('人员信息更新成功');
     } catch (err) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-      this.toastService.addError(err.message);
+      this.toastService.addError(errorMessage(err));
     } finally {
       this.indicator.stop();
       setTimeout(() => {
@@ -550,21 +557,18 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
       await new Promise((resolve, reject) => {
         this.httpClient.post(url, formData).pipe(
           catchError((error) => {
-            console.log("catchError", error);
             reject(error.error);
             throw error;
           }),
         ).subscribe((res) => {
           resolve(res);
-          this.getMembers();          
+          this.getMembers();
         });
       });
       this.addFormData.users = [];
       this.addFormData.roleIds = this.roles[0].id as string;
     } catch (err) {
-      console.log("catch", err);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-      this.toastService.addError(err.message);
+      this.toastService.addError(errorMessage(err));
     } finally {
       this.indicator.stop();
     }

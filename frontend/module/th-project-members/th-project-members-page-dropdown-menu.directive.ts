@@ -9,8 +9,11 @@ import { ProjectResource } from 'core-app/features/hal/resources/project-resourc
 
 @Directive({
   selector: '[thProjectMembersPageDropdownContextMenu]',
+  standalone: false,
 })
 export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrigger {
+  override readonly placement = 'bottom-end';
+
   @Input() public project:ProjectResource;
 
   @Input() public exportHandle:() => void;
@@ -30,7 +33,7 @@ export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrig
     super.ngAfterViewInit();
   }
 
-  protected open(evt:JQuery.TriggeredEvent) {
+  protected override open(evt:Event):void {
     this.buildItems();
     this.opContextMenu.show(this, evt);
   }
@@ -40,23 +43,6 @@ export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrig
       contextMenuId: 'settingsDropdown',
       items: this.items,
     };
-  }
-
-  /**
-   * Positioning args for jquery-ui position.
-   *
-   * @param {Event} openerEvent
-   */
-  public positionArgs(evt:JQuery.TriggeredEvent) {
-    const additionalPositionArgs = {
-      my: 'right top',
-      at: 'right bottom',
-    };
-
-    const position = super.positionArgs(evt);
-    _.assign(position, additionalPositionArgs);
-
-    return position;
   }
 
   public onClose(focus:boolean) {

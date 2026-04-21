@@ -27,6 +27,7 @@ import { CurrentProjectService } from 'core-app/core/current-project/current-pro
   providers: [
     ShortcutEditFieldService,
   ],
+  standalone: false,
 })
 export class WidgetShortcutComponent extends AbstractWidgetComponent implements OnInit, OnChanges, OnDestroy {
   protected currentRawText:string;
