@@ -17,6 +17,7 @@ module Proto
       rpc :GetTemplates, ::Google::Protobuf::Empty, ::GetTemplateResp
       rpc :GetUserInfoByCode, ::GetUserInfoByCodeReq, ::RespUser
       rpc :SendWcWorkerMessage, ::WorkerMessageReq, ::Result
+      rpc :SendImage, ::SendImageReq, ::Result
       rpc :GetPdf, ::GetPdfReq, ::GetPdfResp
       rpc :ShowEstimateButton, ::PlmProjectReq, ::ShowEstimateButtonResp
       # 待更新里程碑的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity

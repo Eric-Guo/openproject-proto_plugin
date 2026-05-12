@@ -52,11 +52,16 @@ message GetUserInfoByCodeReq {
 }
 
 message WorkerMessageReq {
-  int64 toUserID = 1; 
-  string title = 2; 
+  int64 toUserID = 1;
+  string title = 2;
   string description = 3;
   string url = 4;
   string buttonText = 5;
+}
+
+message SendImageReq {
+  int64 toUserID = 1;
+  string imageUrl = 2;
 }
 
 message ReportForm {
@@ -129,6 +134,7 @@ service OpService {
   rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
   rpc GetUserInfoByCode(GetUserInfoByCodeReq) returns(RespUser);
   rpc SendWcWorkerMessage(WorkerMessageReq) returns(Result);
+  rpc SendImage(SendImageReq) returns(Result);
   rpc GetPdf(GetPdfReq) returns(GetPdfResp);
   rpc ShowEstimateButton(PlmProjectReq) returns(ShowEstimateButtonResp);
   // 待更新里程碑的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
