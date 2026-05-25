@@ -50,7 +50,7 @@ export class WidgetShortcutComponent extends AbstractWidgetComponent implements 
     protected layout:GridAreaService,
     protected currentProject:CurrentProjectService,
   ) {
-    super(I18n, injector);
+    super();
   }
 
   ngOnInit():void {

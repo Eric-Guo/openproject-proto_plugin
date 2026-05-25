@@ -26,7 +26,7 @@ export class ThProjectMembersPageDropdownMenuDirective extends OpContextMenuTrig
     readonly opContextMenu:OPContextMenuService,
     readonly authorisationService:AuthorisationService,
     readonly I18n:I18nService) {
-    super(elementRef, opContextMenu);
+    super();
   }
 
   ngAfterViewInit():void {
