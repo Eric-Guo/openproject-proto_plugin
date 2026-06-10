@@ -129,6 +129,14 @@ message GetBudgetOverrunProjectsResp {
   int64 total = 3;
 }
 
+message SyncTimeEntriesReq {
+  int64 UserID = 1;
+  string spentOn = 2;
+}
+
+message SyncTimeEntriesResp {
+  bool success = 1;
+}
 service OpService {
   rpc SendMessage(MessageRequest) returns(Result);
   rpc GetTemplates(google.protobuf.Empty) returns(GetTemplateResp);
@@ -143,4 +151,6 @@ service OpService {
   rpc GetArchiveProjects(GetArchiveProjectsReq) returns(GetArchiveProjectsResp);
   // 预算超支的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
   rpc GetBudgetOverrunProjects(GetBudgetOverrunProjectsReq) returns(GetBudgetOverrunProjectsResp);
+  //老系统创建工时数据同步
+  rpc SyncTimeEntries(SyncTimeEntriesReq) returns(SyncTimeEntriesResp);
 }
