@@ -26,8 +26,6 @@ module Proto
       rpc :GetArchiveProjects, ::GetArchiveProjectsReq, ::GetArchiveProjectsResp
       # 预算超支的项目 https://plm.thape.com.cn/projects/plmwenti/work_packages/391927/activity
       rpc :GetBudgetOverrunProjects, ::GetBudgetOverrunProjectsReq, ::GetBudgetOverrunProjectsResp
-      # 老系统创建工时数据同步
-      rpc :SyncTimeEntries, ::SyncTimeEntriesReq, ::SyncTimeEntriesResp
       def self.current_client
         @@current_client ||= ::Gruf::Client.new(service: Proto::OpService)
       end
