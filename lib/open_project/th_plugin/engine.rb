@@ -14,7 +14,7 @@ module OpenProject::ThPlugin
     register(
       'openproject-th_plugin',
       author_url: 'https://www.thape.com',
-      requires_openproject: '>= 17.5.0',
+      requires_openproject: '>= 17.6.1',
       name: :project_module_th_plugin,
     ) do
       # We define a new project module here for our controller including a permission.
