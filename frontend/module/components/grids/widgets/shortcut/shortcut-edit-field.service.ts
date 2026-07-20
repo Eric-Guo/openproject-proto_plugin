@@ -77,15 +77,15 @@ export class ShortcutEditFieldService extends EditFieldHandler {
   }
 
   public get rawText() {
-    return this.textValue?.raw ?? '';
+    return _.get(this.textValue, 'raw', '');
   }
 
   public get htmlText() {
-    return this.textValue?.html ?? '';
+    return _.get(this.textValue, 'html', '');
   }
 
   public get textValue() {
-    return this.changeset.value<{ raw?:string; html?:string } | undefined>(this.fieldName);
+    return this.changeset.value(this.fieldName);
   }
 
   public handleUserCancel() {
