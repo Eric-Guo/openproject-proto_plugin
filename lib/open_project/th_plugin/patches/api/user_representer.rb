@@ -14,11 +14,12 @@ module OpenProject::ThPlugin
                      writable: -> { true },
                      cache_if: -> { current_user_is_admin? }
 
-            property :department,
+            property :th_department,
+                     as: :th_department,
                      exec_context: :decorator,
                      render_nil: false,
-                     getter: ->(*) { represented.department },
-                     setter: ->(fragment:, represented:, **) { represented.department = fragment },
+                     getter: ->(*) { represented.th_department },
+                     setter: ->(fragment:, represented:, **) { represented.th_department = fragment },
                      writable: -> { true },
                      cache_if: -> { current_user_is_admin? }
 

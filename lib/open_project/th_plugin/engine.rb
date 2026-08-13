@@ -95,8 +95,14 @@ module OpenProject::ThPlugin
 
     extend_api_response(:v3, :users, :user,
                         &::OpenProject::ThPlugin::Patches::API::UserRepresenter.extension)
+    extend_api_response(:v3, :users, :user_payload,
+                        &::OpenProject::ThPlugin::Patches::API::UserRepresenter.extension)
     extend_api_response(:v3, :notifications, :notification,
                         &::OpenProject::ThPlugin::Patches::API::NotificationRepresenter.extension)
+
+    %i[company th_department title mobile].each do |attribute|
+      add_api_attribute on: :user, ar_name: attribute
+    end
 
     # No homescreen block
     # config.after_initialize do

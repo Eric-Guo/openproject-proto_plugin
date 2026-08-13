@@ -11,7 +11,7 @@ module OpenProject::ThPlugin
         before_save :update_member_profiles, if: Proc.new { |user| user.saved_change_to_last_login_on? \
           || (user.respond_to?(:lastname) && user.saved_change_to_lastname?) \
           || (user.respond_to?(:company) && user.saved_change_to_company?) \
-          || (user.respond_to?(:department) && user.saved_change_to_department?) \
+          || (user.respond_to?(:th_department) && user.saved_change_to_th_department?) \
           || (user.respond_to?(:title) && user.saved_change_to_title?) \
           || (user.respond_to?(:mobile) && user.saved_change_to_mobile?)
         }
@@ -39,7 +39,7 @@ module OpenProject::ThPlugin
         return unless department.present?
 
         self.company = department.company_name
-        self.department = department.name
+        self.th_department = department.name
       end
 
       def update_member_profiles
@@ -58,8 +58,8 @@ module OpenProject::ThPlugin
             profile.company = self.company
           end
 
-          if profile.department.blank? && self.respond_to?(:department) && self.department.present?
-            profile.department = self.department
+          if profile.department.blank? && respond_to?(:th_department) && th_department.present?
+            profile.department = th_department
           end
 
           if profile.position.blank? && self.respond_to?(:title) && self.title.present?

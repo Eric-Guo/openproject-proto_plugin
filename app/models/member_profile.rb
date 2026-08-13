@@ -25,8 +25,10 @@ class MemberProfile < ApplicationRecord
   end
 
   def set_default_department
-    return unless member.principal.present? && member.principal.respond_to?(:department) && member.principal.department.present?
-    self.department = member.principal.department
+    principal = member.principal
+    return unless principal&.respond_to?(:th_department) && principal.th_department.present?
+
+    self.department = principal.th_department
   end
 
   def set_default_position

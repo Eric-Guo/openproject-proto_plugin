@@ -9,7 +9,7 @@ RSpec.describe "TH member profile sync" do
       firstname: "Yanwu",
       lastname: "Li",
       company: "Shanghai THA",
-      department: "MEP",
+      th_department: "MEP",
       title: "Senior Electrical Engineer",
       mobile: "18210039594"
     )
@@ -37,7 +37,7 @@ RSpec.describe "TH member profile sync" do
       aggregate_failures do
         expect(profile.name).to eq(user.name)
         expect(profile.company).to eq(user.company)
-        expect(profile.department).to eq(user.department)
+        expect(profile.department).to eq(user.th_department)
         expect(profile.position).to eq(user.title)
         expect(profile.mobile).to eq(user.mobile)
       end
