@@ -5,8 +5,7 @@ class ThPlugin::AddActiveDepartmentAsGroupJob < ApplicationJob
       group_name = department.op_group_name
       next if group_name.blank?
 
-      group = Group.find_or_initialize_by(name: group_name)
-      group.save
+      Group.find_or_create_by!(name: group_name)
     end
   end
 end
