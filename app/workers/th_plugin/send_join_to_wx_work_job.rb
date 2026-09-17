@@ -9,6 +9,7 @@ class ThPlugin::SendJoinToWxWorkJob < ApplicationJob
     return if [205].include?(user.id) # skip PPMAdmin@thape.com.cn
 
     project = member.project
+    real_pm_udf1 = project.profile&.real_pm_udf1
 
     data = {
       toUserID: user.id,
@@ -16,6 +17,7 @@ class ThPlugin::SendJoinToWxWorkJob < ApplicationJob
       description: [
         '<div class="highlight">加入新项目</div>',
         "<div class=\"normal\">项目名称：#{project.name}</div>",
+        ("<div class=\"normal\">PM项目简称：#{real_pm_udf1}</div>" if real_pm_udf1.present?),
         "<div class=\"normal\">角色名称：#{member.roles.pluck(:name).join(',')}</div>"
       ].join(''),
       url: Rails.application.routes.url_helpers.root_url(host: Setting.host_name, protocol: Setting.protocol),
