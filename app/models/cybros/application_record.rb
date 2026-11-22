@@ -3,8 +3,10 @@
 module Cybros
   class ApplicationRecord < ActiveRecord::Base
     self.abstract_class = true
-    ActiveRecord.default_timezone = :local
-    establish_connection :cybros unless Rails.env.test?
+    unless Rails.env.test?
+      ActiveRecord.default_timezone = :local
+      establish_connection :cybros
+    end
 
     def readonly?
       true

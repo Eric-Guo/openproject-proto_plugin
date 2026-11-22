@@ -3,8 +3,10 @@
 module Bi
   class BiLocalTimeRecord < ActiveRecord::Base
     self.abstract_class = true
-    ActiveRecord.default_timezone = :local
-    establish_connection :cybros_bi unless Rails.env.test?
+    unless Rails.env.test?
+      ActiveRecord.default_timezone = :local
+      establish_connection :cybros_bi
+    end
 
     def readonly?
       true

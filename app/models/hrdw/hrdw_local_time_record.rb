@@ -3,8 +3,10 @@
 module Hrdw
   class HrdwLocalTimeRecord < ActiveRecord::Base
     self.abstract_class = true
-    ActiveRecord.default_timezone = :local
-    establish_connection :hrdw unless Rails.env.test?
+    unless Rails.env.test?
+      ActiveRecord.default_timezone = :local
+      establish_connection :hrdw
+    end
 
     def readonly?
       true
