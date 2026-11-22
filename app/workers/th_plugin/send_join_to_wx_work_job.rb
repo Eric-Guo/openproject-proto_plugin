@@ -2,10 +2,12 @@ class ThPlugin::SendJoinToWxWorkJob < ApplicationJob
   queue_with_priority :above_normal
 
   def perform(id)
-    member = Member.find(id)
+    member = Member.find_by(id:)
+    return unless member&.project && member.entity_type.nil?
+
     user = member.principal
 
-    return unless user.mail.end_with?('@thape.com.cn')
+    return unless user.is_a?(User) && user.mail.end_with?('@thape.com.cn')
     return if [205].include?(user.id) # skip PPMAdmin@thape.com.cn
 
     project = member.project
