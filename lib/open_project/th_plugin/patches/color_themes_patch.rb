@@ -13,7 +13,7 @@ module OpenProject::ThPlugin
 
       module ClassMethods
         def themes
-          super.append(plm_dark, thape_ib, thape_ib_new, plm_light)
+          super + [plm_dark, thape_ib, thape_ib_new, plm_light]
         end
 
         def plm_dark
