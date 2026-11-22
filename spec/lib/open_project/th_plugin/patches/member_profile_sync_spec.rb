@@ -28,7 +28,7 @@ RSpec.describe "TH member profile sync" do
       expect(member.profile).to be_nil
 
       allow(user).to receive(:members).and_return([member])
-      allow(user).to receive(:staff).and_return(nil)
+      expect(user).not_to receive(:staff)
 
       expect { user.update_member_profiles }.not_to change(MemberProfile, :count)
 

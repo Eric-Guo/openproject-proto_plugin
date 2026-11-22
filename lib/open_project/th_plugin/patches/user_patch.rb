@@ -66,8 +66,9 @@ module OpenProject::ThPlugin
             profile.position = self.title
           end
 
-          if profile.major.blank? && self.staff.present? && self.staff.profession.present?
-            profile.major = self.staff.profession
+          if profile.major.blank? && mail.to_s.end_with?("@thape.com.cn")
+            profession = staff&.profession
+            profile.major = profession if profession.present?
           end
 
           if profile.mobile.blank? && self.respond_to?(:mobile) && self.mobile.present?
