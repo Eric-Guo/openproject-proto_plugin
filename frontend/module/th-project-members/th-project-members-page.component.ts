@@ -178,7 +178,7 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
 
   setCurrentMembers() {
     this.currentMembers = this.members.filter((member) => {
-      if (this.currentFilter.email && !member.email.includes(this.currentFilter.email)) return false;
+      if (this.currentFilter.email && !member.email?.includes(this.currentFilter.email)) return false;
       if (this.currentFilter.name && !member.name.includes(this.currentFilter.name)) return false;
       if (this.currentFilter.role_id && !member.roles.some((role) => Number(role.id) === Number(this.currentFilter.role_id))) return false;
       if (this.currentFilter.company) {
@@ -283,9 +283,9 @@ export class ThProjectMembersPageComponent implements OnInit, AfterViewInit {
   handleExport = async () => {
     const rows = this.currentMembers.map((member) => ({
       name: member.name,
-      email: member.email,
+      email: member.email ?? '',
       roles: member.roles.map((item) => item.name).join(','),
-      statusName: member.statusName,
+      statusName: member.statusName ?? '',
       company: member.profile?.company || '',
       department: member.profile?.department || '',
       position: member.profile?.position || '',

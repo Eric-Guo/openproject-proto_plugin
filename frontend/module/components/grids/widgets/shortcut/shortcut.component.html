@@ -1,4 +1,5 @@
 <widget-header
+  [headingId]="headingId"
   [name]="widgetName"
   (onRenamed)="renameWidget($event)">
 
@@ -8,7 +9,7 @@
   </widget-menu>
 </widget-header>
 
-<ng-template #text>
+<ng-template #widgetText>
   <span #displayContainer
         class="inline-edit--formattable-display-text -default">
     <div class="op-uc-container"
@@ -50,11 +51,11 @@
         (click)="activate($event)"
         [ngClass]="inplaceEditClasses"
       >
-        <ng-container *ngTemplateOutlet="text"></ng-container>
+        <ng-container *ngTemplateOutlet="widgetText"></ng-container>
       </button>
 
       <ng-container *ngIf="!isTextEditable">
-        <ng-container *ngTemplateOutlet="text"></ng-container>
+        <ng-container *ngTemplateOutlet="widgetText"></ng-container>
       </ng-container>
     </div>
   </div>

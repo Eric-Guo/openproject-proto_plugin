@@ -154,9 +154,8 @@ export class ShortcutEditFieldService extends EditFieldHandler {
       },
     };
 
-    if (grid.prepareAttachment as { href?:string }) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
-      resourceSource._links.prepareAttachment = grid.prepareAttachment;
+    if (grid.$source._links.prepareAttachment) {
+      resourceSource._links.prepareAttachment = grid.$source._links.prepareAttachment;
     }
 
     const resource = this.halResource.createHalResource(resourceSource, true);

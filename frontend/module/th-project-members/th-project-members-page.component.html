@@ -35,7 +35,7 @@
           type="file"
           style="display: none;"
           accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          (change)="handleImportInputChange($event)"
+          (change)="handleImportInputChange()"
         />
         <button
           class="button last work-packages-settings-button toolbar-icon"
@@ -44,7 +44,6 @@
           [importHandle]="handleImport"
           [exportHandle]="handleExport"
           [downloadTemplateHandle]="handleDownloadTemplate"
-          [currentProject]="currentProject.project"
         >
           <i class="button--icon icon-show-more"></i>
         </button>
@@ -75,7 +74,8 @@
           <op-user-autocompleter
             name="member[user_ids][]"
             inputBindValue="'id'"
-            [url]="autoCompleterUrl"
+            *ngIf="autoCompleterUrl as url"
+            [url]="url"
             [searchable]="true"
             appendTo="body"
             [multiple]="true"
@@ -337,9 +337,8 @@
             *ngIf="groupMember.type === 'member'"
             [member]="groupMember.member"
             [roles]="roles"
-            [users]="users"
             [reloadMembers]="getMembers"
-            [isProjectAdmin]="(isProjectAdmin$ | async)"
+            [isProjectAdmin]="(isProjectAdmin$ | async) === true"
             [currentProject]="currentProject"
           ></th-project-members-row>
           <tr

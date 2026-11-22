@@ -9,7 +9,7 @@ import { LoadingIndicatorService } from 'core-app/core/loading-indicator/loading
 import { MembershipResource } from 'core-app/features/hal/resources/membership-resource';
 import { RoleResource } from 'core-app/features/hal/resources/role-resource';
 import { ToastService } from 'core-app/shared/components/toaster/toast.service';
-import { ProjectResource } from 'core-app/features/hal/resources/project-resource';
+import { CurrentProjectService } from 'core-app/core/current-project/current-project.service';
 
 function errorMessage(error:unknown):string {
   if (error instanceof Error) {
@@ -36,7 +36,7 @@ export class ThProjectMembersRowComponent {
 
   @Input() isProjectAdmin:boolean;
 
-  @Input() currentProject:ProjectResource;
+  @Input() currentProject:CurrentProjectService;
 
   public invitedTip = '用户已被邀请，正在等待注册';
 
@@ -84,7 +84,8 @@ export class ThProjectMembersRowComponent {
     void this.updateMember();
   }
 
-  handleRoleChange(e:InputEvent, roleId:string) {
+  handleRoleChange(e:Event, roleId:string|null) {
+    if (!roleId) return;
     const target = e.target as HTMLInputElement;
     if (target.checked) {
       this.formData.roles = Array.from(new Set([...this.formData.roles, roleId]));

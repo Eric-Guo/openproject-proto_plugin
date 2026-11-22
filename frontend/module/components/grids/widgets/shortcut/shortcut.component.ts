@@ -152,7 +152,8 @@ export class WidgetShortcutComponent extends AbstractWidgetComponent implements 
   }
 
   private memorizeRawText() {
-    this.currentRawText = (this.resource.options.text as HalResource).raw;
+    const { raw } = this.resource.options.text as HalResource;
+    this.currentRawText = typeof raw === 'string' ? raw : '';
   }
 
   private memorizeCustomText() {

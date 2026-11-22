@@ -41,7 +41,6 @@ import {
   NgModule,
 } from '@angular/core';
 import './global_scripts';
-import { UIRouterModule } from '@uirouter/angular';
 import { HookService } from 'core-app/features/plugins/hook-service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -49,7 +48,6 @@ import { OpenprojectAutocompleterModule } from 'core-app/shared/components/autoc
 import { OpenprojectPrincipalRenderingModule } from 'core-app/shared/components/principal/principal-rendering.module';
 import { AttributeHelpTextModule } from 'core-app/shared/components/attribute-help-texts/attribute-help-text.module';
 import { IconModule } from 'core-app/shared/components/icon/icon.module';
-import { KITTEN_ROUTES } from 'core-app/features/plugins/linked/openproject-th_plugin/kitten.routes';
 import { kittenAction } from 'core-app/features/plugins/linked/openproject-th_plugin/context-menu';
 import { registerCustomElement } from 'core-app/shared/helpers/angular/custom-elements.helper';
 import { ThProjectMembersPageComponent } from 'core-app/features/plugins/linked/openproject-th_plugin/th-project-members/th-project-members-page.component';
@@ -73,7 +71,6 @@ export function initializeThPlugin(injector:Injector) {
     OpenprojectPrincipalRenderingModule,
     AttributeHelpTextModule,
     IconModule,
-    UIRouterModule.forChild({ states: KITTEN_ROUTES }),
   ],
   providers: [
     // This initializer gets called when the Angular frontend is being loaded by the core
@@ -94,5 +91,6 @@ export function initializeThPlugin(injector:Injector) {
 })
 export class PluginModule {
   constructor(injector:Injector) {
+    registerCustomElement('opce-th-project-members', ThProjectMembersPageComponent, { injector });
   }
 }
